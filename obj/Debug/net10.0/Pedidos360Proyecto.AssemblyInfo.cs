@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Pedidos360Proyecto")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ea6b2ba66dfec6b1ef2936b88d1ec2b4c4f63068")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7be0cbf79ce294b0e7055d031494bcab112e4655")]
 [assembly: System.Reflection.AssemblyProductAttribute("Pedidos360Proyecto")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Pedidos360Proyecto")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

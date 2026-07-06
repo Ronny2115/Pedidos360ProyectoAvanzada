@@ -11,10 +11,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.AspNetCore.Identity.UI.UIFrameworkAttribute("Bootstrap5")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("Pedidos360Proyecto")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b8dc1a01a8ff49dd35d6cb3ee88254e75f1b99b3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+66061f66cad14eb58968c47bd8a4af3d7124aa8c")]
 [assembly: System.Reflection.AssemblyProductAttribute("Pedidos360Proyecto")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Pedidos360Proyecto")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

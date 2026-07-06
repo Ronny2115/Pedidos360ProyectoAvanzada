@@ -1,0 +1,34 @@
+@model Producto
+
+@{
+    ViewData["Title"] = "Detalle de producto";
+}
+
+<h1>Detalle de producto</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <img src="@Model.ImagenUrl" class="img-fluid rounded" alt="@Model.Nombre" />
+    </div>
+    <div class="col-md-8">
+        <dl class="row">
+            <dt class="col-sm-3">Nombre</dt>
+            <dd class="col-sm-9">@Model.Nombre</dd>
+            <dt class="col-sm-3">Categoría</dt>
+            <dd class="col-sm-9">@Model.Categoria?.Nombre</dd>
+            <dt class="col-sm-3">Precio</dt>
+            <dd class="col-sm-9">@Model.Precio.ToString("C")</dd>
+            <dt class="col-sm-3">Impuesto</dt>
+            <dd class="col-sm-9">@Model.ImpuestoPorc%</dd>
+            <dt class="col-sm-3">Stock</dt>
+            <dd class="col-sm-9">@Model.Stock</dd>
+            <dt class="col-sm-3">Activo</dt>
+            <dd class="col-sm-9">@(Model.Activo ? "Sí" : "No")</dd>
+        </dl>
+        @if (User.IsInRole("Admin"))
+        {
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Editar</a>
+        }
+        <a asp-action="Index" class="btn btn-secondary">Volver</a>
+    </div>
+</div>

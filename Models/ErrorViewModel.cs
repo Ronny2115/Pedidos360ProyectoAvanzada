@@ -7,5 +7,3 @@ namespace Pedidos360Proyecto.Models
         public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
     }
 }
-
-dwdwqdqwdqw

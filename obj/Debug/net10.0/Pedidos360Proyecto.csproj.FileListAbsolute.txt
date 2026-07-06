@@ -213,7 +213,6 @@ C:\Users\andre\Documents\DOCUMENTOS U\Programacion Avanzada\Pedidos360Proyecto\o
 C:\Users\andre\Documents\DOCUMENTOS U\Programacion Avanzada\Pedidos360Proyecto\obj\Debug\net10.0\compressed\nezrqnk58p-{0}-muycvpuwrr-muycvpuwrr.gz
 C:\Users\andre\Documents\DOCUMENTOS U\Programacion Avanzada\Pedidos360Proyecto\obj\Debug\net10.0\compressed\v0zgfp0y55-{0}-87fc7y1x7t-87fc7y1x7t.gz
 C:\Users\andre\Documents\DOCUMENTOS U\Programacion Avanzada\Pedidos360Proyecto\obj\Debug\net10.0\compressed\yfc7ypekbg-{0}-mlv21k5csn-mlv21k5csn.gz
-C:\Users\andre\Documents\DOCUMENTOS U\Programacion Avanzada\Pedidos360Proyecto\obj\Debug\net10.0\compressed\4r2ac3qpe6-{0}-b9sayid5wm-b9sayid5wm.gz
 C:\Users\andre\Documents\DOCUMENTOS U\Programacion Avanzada\Pedidos360Proyecto\obj\Debug\net10.0\compressed\ptd5frmddv-{0}-61n19gt1b8-61n19gt1b8.gz
 C:\Users\andre\Documents\DOCUMENTOS U\Programacion Avanzada\Pedidos360Proyecto\obj\Debug\net10.0\compressed\k70gnrga4q-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
 C:\Users\andre\Documents\DOCUMENTOS U\Programacion Avanzada\Pedidos360Proyecto\obj\Debug\net10.0\compressed\z02eeewj89-{0}-bqjiyaj88i-bqjiyaj88i.gz
@@ -290,3 +289,4 @@ C:\Users\andre\Documents\DOCUMENTOS U\Programacion Avanzada\Pedidos360Proyecto\o
 C:\Users\andre\Documents\DOCUMENTOS U\Programacion Avanzada\Pedidos360Proyecto\obj\Debug\net10.0\ref\Pedidos360Proyecto.dll
 C:\Users\andre\Documents\DOCUMENTOS U\Programacion Avanzada\Pedidos360Proyecto\obj\Debug\net10.0\compressed\p3inz83ef4-{0}-6ogd5opyor-6ogd5opyor.gz
 C:\Users\andre\Documents\DOCUMENTOS U\Programacion Avanzada\Pedidos360Proyecto\obj\Debug\net10.0\compressed\moiwjq8k3e-{0}-6110ua73j5-6110ua73j5.gz
+C:\Users\andre\Documents\DOCUMENTOS U\Programacion Avanzada\Pedidos360Proyecto\obj\Debug\net10.0\compressed\4r2ac3qpe6-{0}-bu0hkxprke-bu0hkxprke.gz

@@ -17,7 +17,7 @@ Sistema web para la administración de productos, categorías, clientes, inventa
 ## Requisitos
 
 - [.NET SDK 10.0](https://dotnet.microsoft.com/) o superior.
-- SQL Server LocalDB (incluido con Visual Studio) o una instancia de SQL Server accesible.
+- Una instancia de SQL Server accesible (por defecto el proyecto apunta a una instancia local llamada `localhost`; ver más abajo cómo cambiarla).
 - Herramienta `dotnet-ef` (se instala como se indica más abajo).
 
 ## Instalación
@@ -35,13 +35,15 @@ Sistema web para la administración de productos, categorías, clientes, inventa
    dotnet tool install --global dotnet-ef
    ```
 
-4. Revisar/ajustar la cadena de conexión en `appsettings.json` si no vas a usar LocalDB:
+4. Revisar/ajustar la cadena de conexión en `appsettings.json` según tu servidor SQL Server:
 
    ```json
    "ConnectionStrings": {
-     "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=Pedidos360Db;Trusted_Connection=True;MultipleActiveResultSets=true"
+     "DefaultConnection": "Server=localhost;Database=Pedidos360Db;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True"
    }
    ```
+
+   La cadena por defecto usa autenticación de Windows (`Trusted_Connection=True`) contra la instancia `localhost`. `TrustServerCertificate=True` evita errores de certificado SSL en entornos de desarrollo. Si usas SQL Server Authentication, reemplaza `Trusted_Connection=True` por `User Id=...;Password=...`. Si prefieres LocalDB, usa `Server=(localdb)\\mssqllocaldb;...` en su lugar.
 
 ## Base de datos (Migrations)
 
@@ -51,7 +53,7 @@ El proyecto usa Entity Framework Core Code First. Para crear la base de datos y 
 dotnet ef database update
 ```
 
-Esto crea la base `Pedidos360Db` en LocalDB con todas las tablas (Categorias, Productos, Clientes, Pedidos, PedidoDetalles, AspNet*).
+Esto crea la base `Pedidos360Db` en la instancia configurada (`localhost` por defecto) con todas las tablas (Categorias, Productos, Clientes, Pedidos, PedidoDetalles, AspNet*).
 
 > Si necesitas regenerar la base desde cero: `dotnet ef database drop --force` seguido de `dotnet ef database update`.
 

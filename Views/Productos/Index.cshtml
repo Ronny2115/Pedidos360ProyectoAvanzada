@@ -5,25 +5,28 @@
 }
 
 <div class="d-flex justify-content-between align-items-center mb-3">
-    <h1>Productos</h1>
+    <h1 class="h3 mb-0"><i class="bi bi-cake2 me-2"></i>Productos</h1>
     @if (User.IsInRole("Admin"))
     {
-        <a asp-action="Create" class="btn btn-primary">Nuevo producto</a>
+        <a asp-action="Create" class="btn btn-primary"><i class="bi bi-plus-circle me-1"></i>Nuevo producto</a>
     }
 </div>
 
 @if (TempData["Success"] is not null)
 {
-    <div class="alert alert-success">@TempData["Success"]</div>
+    <div class="alert alert-success"><i class="bi bi-check-circle me-1"></i>@TempData["Success"]</div>
 }
 @if (TempData["Error"] is not null)
 {
-    <div class="alert alert-danger">@TempData["Error"]</div>
+    <div class="alert alert-danger"><i class="bi bi-exclamation-triangle me-1"></i>@TempData["Error"]</div>
 }
 
-<form method="get" asp-action="Index" class="row g-2 mb-3">
+<form method="get" asp-action="Index" class="row g-2 mb-4">
     <div class="col-md-4">
-        <input type="text" name="nombre" value="@Model.Nombre" class="form-control" placeholder="Buscar por nombre" />
+        <div class="input-group">
+            <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
+            <input type="text" name="nombre" value="@Model.Nombre" class="form-control" placeholder="Buscar por nombre" />
+        </div>
     </div>
     <div class="col-md-4">
         <select name="categoriaId" class="form-select">
@@ -35,10 +38,10 @@
         </select>
     </div>
     <div class="col-md-2">
-        <button type="submit" class="btn btn-outline-primary w-100">Filtrar</button>
+        <button type="submit" class="btn btn-outline-primary w-100"><i class="bi bi-funnel me-1"></i>Filtrar</button>
     </div>
     <div class="col-md-2">
-        <a asp-action="Index" class="btn btn-outline-secondary w-100">Limpiar</a>
+        <a asp-action="Index" class="btn btn-outline-secondary w-100"><i class="bi bi-x-lg me-1"></i>Limpiar</a>
     </div>
 </form>
 
@@ -46,24 +49,24 @@
 @foreach (var producto in Model.Productos)
 {
         <div class="col">
-            <div class="card h-100">
+            <div class="card producto-card h-100">
                 <img src="@producto.ImagenUrl" class="card-img-top" alt="@producto.Nombre" style="height:160px;object-fit:cover;" />
                 <div class="card-body">
                     <h5 class="card-title">@producto.Nombre</h5>
-                    <p class="card-text mb-1">@producto.Categoria?.Nombre</p>
-                    <p class="card-text mb-1">Precio: @producto.Precio.ToString("C")</p>
-                    <p class="card-text mb-1">Stock: @producto.Stock</p>
+                    <p class="card-text mb-1"><i class="bi bi-tag text-body-secondary me-1"></i>@producto.Categoria?.Nombre</p>
+                    <p class="card-text mb-1"><i class="bi bi-currency-dollar text-body-secondary me-1"></i>@producto.Precio.ToString("C")</p>
+                    <p class="card-text mb-1"><i class="bi bi-box-seam text-body-secondary me-1"></i>Stock: @producto.Stock</p>
                     @if (!producto.Activo)
                     {
-                        <span class="badge bg-secondary">Inactivo</span>
+                        <span class="badge bg-secondary"><i class="bi bi-slash-circle me-1"></i>Inactivo</span>
                     }
                 </div>
                 <div class="card-footer d-flex justify-content-between">
-                    <a asp-action="Details" asp-route-id="@producto.Id" class="btn btn-sm btn-outline-secondary">Ver</a>
+                    <a asp-action="Details" asp-route-id="@producto.Id" class="btn btn-sm btn-outline-secondary" title="Ver"><i class="bi bi-eye"></i></a>
                     @if (User.IsInRole("Admin"))
                     {
-                        <a asp-action="Edit" asp-route-id="@producto.Id" class="btn btn-sm btn-outline-primary">Editar</a>
-                        <a asp-action="Delete" asp-route-id="@producto.Id" class="btn btn-sm btn-outline-danger">Eliminar</a>
+                        <a asp-action="Edit" asp-route-id="@producto.Id" class="btn btn-sm btn-outline-primary" title="Editar"><i class="bi bi-pencil"></i></a>
+                        <a asp-action="Delete" asp-route-id="@producto.Id" class="btn btn-sm btn-outline-danger" title="Eliminar"><i class="bi bi-trash"></i></a>
                     }
                 </div>
             </div>
@@ -73,7 +76,7 @@
 
 @if (Model.TotalPaginas > 1)
 {
-    <nav class="mt-3">
+    <nav class="mt-4">
         <ul class="pagination">
             @for (var i = 1; i <= Model.TotalPaginas; i++)
             {

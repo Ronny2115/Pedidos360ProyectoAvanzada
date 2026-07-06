@@ -4,41 +4,45 @@
     ViewData["Title"] = "Editar cliente";
 }
 
-<h1>Editar cliente</h1>
+<h1 class="h3 mb-3"><i class="bi bi-pencil-square me-2"></i>Editar cliente</h1>
 
 <div class="row">
-    <div class="col-md-6">
-        <form asp-action="Edit">
-            <input type="hidden" asp-for="Id" />
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="mb-3">
-                <label asp-for="Nombre" class="form-label"></label>
-                <input asp-for="Nombre" class="form-control" />
-                <span asp-validation-for="Nombre" class="text-danger"></span>
+    <div class="col-md-7">
+        <div class="card">
+            <div class="card-body p-4">
+                <form asp-action="Edit">
+                    <input type="hidden" asp-for="Id" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-floating mb-3">
+                        <input asp-for="Nombre" class="form-control" placeholder="Nombre completo" />
+                        <label asp-for="Nombre"></label>
+                        <span asp-validation-for="Nombre" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input asp-for="Cedula" class="form-control" placeholder="Cédula" />
+                        <label asp-for="Cedula"></label>
+                        <span asp-validation-for="Cedula" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input asp-for="Correo" class="form-control" placeholder="nombre@ejemplo.com" />
+                        <label asp-for="Correo"></label>
+                        <span asp-validation-for="Correo" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input asp-for="Telefono" class="form-control" placeholder="Teléfono" />
+                        <label asp-for="Telefono"></label>
+                        <span asp-validation-for="Telefono" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input asp-for="Direccion" class="form-control" placeholder="Dirección" />
+                        <label asp-for="Direccion"></label>
+                        <span asp-validation-for="Direccion" class="text-danger"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary"><i class="bi bi-check2 me-1"></i>Guardar</button>
+                    <a asp-action="Index" class="btn btn-outline-secondary"><i class="bi bi-x-lg me-1"></i>Cancelar</a>
+                </form>
             </div>
-            <div class="mb-3">
-                <label asp-for="Cedula" class="form-label"></label>
-                <input asp-for="Cedula" class="form-control" />
-                <span asp-validation-for="Cedula" class="text-danger"></span>
-            </div>
-            <div class="mb-3">
-                <label asp-for="Correo" class="form-label"></label>
-                <input asp-for="Correo" class="form-control" />
-                <span asp-validation-for="Correo" class="text-danger"></span>
-            </div>
-            <div class="mb-3">
-                <label asp-for="Telefono" class="form-label"></label>
-                <input asp-for="Telefono" class="form-control" />
-                <span asp-validation-for="Telefono" class="text-danger"></span>
-            </div>
-            <div class="mb-3">
-                <label asp-for="Direccion" class="form-label"></label>
-                <input asp-for="Direccion" class="form-control" />
-                <span asp-validation-for="Direccion" class="text-danger"></span>
-            </div>
-            <button type="submit" class="btn btn-primary">Guardar</button>
-            <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
-        </form>
+        </div>
     </div>
 </div>
 

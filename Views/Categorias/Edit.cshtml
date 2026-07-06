@@ -4,21 +4,25 @@
     ViewData["Title"] = "Editar categoría";
 }
 
-<h1>Editar categoría</h1>
+<h1 class="h3 mb-3"><i class="bi bi-pencil-square me-2"></i>Editar categoría</h1>
 
 <div class="row">
     <div class="col-md-6">
-        <form asp-action="Edit">
-            <input type="hidden" asp-for="Id" />
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="mb-3">
-                <label asp-for="Nombre" class="form-label"></label>
-                <input asp-for="Nombre" class="form-control" />
-                <span asp-validation-for="Nombre" class="text-danger"></span>
+        <div class="card">
+            <div class="card-body p-4">
+                <form asp-action="Edit">
+                    <input type="hidden" asp-for="Id" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-floating mb-3">
+                        <input asp-for="Nombre" class="form-control" placeholder="Nombre de la categoría" />
+                        <label asp-for="Nombre"></label>
+                        <span asp-validation-for="Nombre" class="text-danger"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary"><i class="bi bi-check2 me-1"></i>Guardar</button>
+                    <a asp-action="Index" class="btn btn-outline-secondary"><i class="bi bi-x-lg me-1"></i>Cancelar</a>
+                </form>
             </div>
-            <button type="submit" class="btn btn-primary">Guardar</button>
-            <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
-        </form>
+        </div>
     </div>
 </div>
 

@@ -4,19 +4,23 @@
     ViewData["Title"] = "Eliminar cliente";
 }
 
-<h1>Eliminar cliente</h1>
+<h1 class="h3 mb-3"><i class="bi bi-trash me-2"></i>Eliminar cliente</h1>
 
-<div class="alert alert-warning">¿Está seguro que desea eliminar este cliente?</div>
-
-<dl class="row">
-    <dt class="col-sm-2">Nombre</dt>
-    <dd class="col-sm-10">@Model.Nombre</dd>
-    <dt class="col-sm-2">Cédula</dt>
-    <dd class="col-sm-10">@Model.Cedula</dd>
-</dl>
-
-<form asp-action="Delete">
-    <input type="hidden" asp-for="Id" />
-    <button type="submit" class="btn btn-danger">Eliminar</button>
-    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
-</form>
+<div class="card" style="max-width: 560px;">
+    <div class="card-body p-4">
+        <div class="alert alert-warning"><i class="bi bi-exclamation-triangle me-1"></i>¿Está seguro que desea eliminar este cliente?</div>
+        <dl class="row mb-0">
+            <dt class="col-sm-3">Nombre</dt>
+            <dd class="col-sm-9">@Model.Nombre</dd>
+            <dt class="col-sm-3">Cédula</dt>
+            <dd class="col-sm-9">@Model.Cedula</dd>
+        </dl>
+    </div>
+    <div class="card-footer d-flex gap-2">
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+            <button type="submit" class="btn btn-danger"><i class="bi bi-trash me-1"></i>Eliminar</button>
+            <a asp-action="Index" class="btn btn-outline-secondary"><i class="bi bi-x-lg me-1"></i>Cancelar</a>
+        </form>
+    </div>
+</div>

@@ -48,13 +48,14 @@
         }
 
         productos.forEach(function (producto) {
-            var $item = $("<button type='button' class='list-group-item list-group-item-action'></button>")
-                .text(producto.nombre + " — " + formatoMoneda(producto.precio) + " (stock: " + producto.stock + ")")
+            var $item = $("<button type='button' class='list-group-item list-group-item-action d-flex align-items-center gap-2'></button>")
                 .on("click", function () {
                     agregarLinea(producto);
                     $buscarProducto.val("");
                     $resultados.empty();
                 });
+            $item.append($("<i class='bi bi-cookie text-body-secondary'></i>"));
+            $item.append($("<span></span>").text(producto.nombre + " — " + formatoMoneda(producto.precio) + " (stock: " + producto.stock + ")"));
             $resultados.append($item);
         });
     }
@@ -86,7 +87,7 @@
         $lineasInputs.empty();
 
         if (lineas.length === 0) {
-            $lineasBody.append("<tr id='sinLineas'><td colspan='6' class='text-center text-muted'>Aún no ha agregado productos.</td></tr>");
+            $lineasBody.append("<tr id='sinLineas'><td colspan='6' class='text-center text-muted py-4'><i class='bi bi-basket3 fs-4 d-block mb-1'></i>Aún no ha agregado productos.</td></tr>");
             $btnConfirmar.prop("disabled", true);
             actualizarTotales({ subtotal: 0, impuestos: 0, total: 0 });
             return;
@@ -94,7 +95,7 @@
 
         lineas.forEach(function (linea, index) {
             var $row = $("<tr></tr>").attr("data-index", index);
-            $row.append($("<td></td>").text(linea.nombre));
+            $row.append($("<td></td>").append($("<i class='bi bi-cookie text-body-secondary me-1'></i>"), document.createTextNode(linea.nombre)));
             $row.append($("<td></td>").append(
                 $("<input type='number' min='1' class='form-control form-control-sm cantidad-input' />").val(linea.cantidad)
             ));
@@ -104,7 +105,7 @@
             $row.append($("<td></td>").text(formatoMoneda(linea.precioUnit)));
             $row.append($("<td class='total-linea'></td>").text("..."));
             $row.append($("<td></td>").append(
-                $("<button type='button' class='btn btn-sm btn-outline-danger'>Eliminar</button>").on("click", function () {
+                $("<button type='button' class='btn btn-sm btn-outline-danger' title='Eliminar'><i class=\"bi bi-trash\"></i></button>").on("click", function () {
                     eliminarLinea(index);
                 })
             ));

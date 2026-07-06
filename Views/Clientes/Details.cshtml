@@ -4,20 +4,25 @@
     ViewData["Title"] = "Detalle de cliente";
 }
 
-<h1>Detalle de cliente</h1>
+<h1 class="h3 mb-3"><i class="bi bi-person-circle me-2"></i>Detalle de cliente</h1>
 
-<dl class="row">
-    <dt class="col-sm-2">Nombre</dt>
-    <dd class="col-sm-10">@Model.Nombre</dd>
-    <dt class="col-sm-2">Cédula</dt>
-    <dd class="col-sm-10">@Model.Cedula</dd>
-    <dt class="col-sm-2">Correo</dt>
-    <dd class="col-sm-10">@Model.Correo</dd>
-    <dt class="col-sm-2">Teléfono</dt>
-    <dd class="col-sm-10">@Model.Telefono</dd>
-    <dt class="col-sm-2">Dirección</dt>
-    <dd class="col-sm-10">@Model.Direccion</dd>
-</dl>
-
-<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Editar</a>
-<a asp-action="Index" class="btn btn-secondary">Volver</a>
+<div class="card" style="max-width: 560px;">
+    <div class="card-body p-4">
+        <dl class="row mb-0">
+            <dt class="col-sm-3"><i class="bi bi-person me-1"></i>Nombre</dt>
+            <dd class="col-sm-9">@Model.Nombre</dd>
+            <dt class="col-sm-3"><i class="bi bi-card-text me-1"></i>Cédula</dt>
+            <dd class="col-sm-9">@Model.Cedula</dd>
+            <dt class="col-sm-3"><i class="bi bi-envelope me-1"></i>Correo</dt>
+            <dd class="col-sm-9">@Model.Correo</dd>
+            <dt class="col-sm-3"><i class="bi bi-telephone me-1"></i>Teléfono</dt>
+            <dd class="col-sm-9">@Model.Telefono</dd>
+            <dt class="col-sm-3"><i class="bi bi-geo-alt me-1"></i>Dirección</dt>
+            <dd class="col-sm-9">@Model.Direccion</dd>
+        </dl>
+    </div>
+    <div class="card-footer d-flex gap-2">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary"><i class="bi bi-pencil me-1"></i>Editar</a>
+        <a asp-action="Index" class="btn btn-outline-secondary"><i class="bi bi-arrow-left me-1"></i>Volver</a>
+    </div>
+</div>

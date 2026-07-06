@@ -4,70 +4,79 @@
     ViewData["Title"] = "Nuevo pedido";
 }
 
-<h1>Nuevo pedido</h1>
+<h1 class="h3 mb-3"><i class="bi bi-receipt me-2"></i>Nuevo pedido</h1>
 
 <form asp-action="Create" id="pedidoForm">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-    <div class="row mb-3">
-        <div class="col-md-6">
-            <label asp-for="ClienteId" class="form-label"></label>
-            <select asp-for="ClienteId" class="form-select" asp-items="ViewBag.Clientes">
-                <option value="">-- Seleccione un cliente --</option>
-            </select>
-            <span asp-validation-for="ClienteId" class="text-danger"></span>
+    <div class="card mb-3">
+        <div class="card-body p-4">
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label asp-for="ClienteId" class="form-label"><i class="bi bi-person me-1"></i>Cliente</label>
+                    <select asp-for="ClienteId" class="form-select" asp-items="ViewBag.Clientes">
+                        <option value="">-- Seleccione un cliente --</option>
+                    </select>
+                    <span asp-validation-for="ClienteId" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 position-relative">
+                    <label class="form-label"><i class="bi bi-search me-1"></i>Buscar producto</label>
+                    <input type="text" id="buscarProducto" class="form-control" placeholder="Escriba el nombre del producto" autocomplete="off" />
+                    <div id="resultadosProducto" class="list-group position-absolute w-100 shadow-sm" style="z-index:1000;"></div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="row mb-3">
-        <div class="col-md-6 position-relative">
-            <label class="form-label">Buscar producto</label>
-            <input type="text" id="buscarProducto" class="form-control" placeholder="Escriba el nombre del producto" autocomplete="off" />
-            <div id="resultadosProducto" class="list-group position-absolute w-100" style="z-index:1000;"></div>
-        </div>
+    <div class="table-responsive mb-3">
+        <table class="table table-hover align-middle mb-0">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th style="width:110px;">Cantidad</th>
+                    <th style="width:110px;">Descuento (%)</th>
+                    <th>Precio unit.</th>
+                    <th>Total línea</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="lineasBody">
+                <tr id="sinLineas">
+                    <td colspan="6" class="text-center text-muted py-4"><i class="bi bi-basket3 fs-4 d-block mb-1"></i>Aún no ha agregado productos.</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Producto</th>
-                <th style="width:110px;">Cantidad</th>
-                <th style="width:110px;">Descuento (%)</th>
-                <th>Precio unit.</th>
-                <th>Total línea</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody id="lineasBody">
-            <tr id="sinLineas">
-                <td colspan="6" class="text-center text-muted">Aún no ha agregado productos.</td>
-            </tr>
-        </tbody>
-    </table>
 
     <div id="lineasInputs"></div>
 
-    <div class="row justify-content-end">
+    <div class="row justify-content-end mb-3">
         <div class="col-md-4">
-            <table class="table">
-                <tr>
-                    <th>Subtotal</th>
-                    <td class="text-end" id="totalSubtotal">RD$0.00</td>
-                </tr>
-                <tr>
-                    <th>Impuestos</th>
-                    <td class="text-end" id="totalImpuestos">RD$0.00</td>
-                </tr>
-                <tr>
-                    <th>Total</th>
-                    <td class="text-end fw-bold" id="totalTotal">RD$0.00</td>
-                </tr>
-            </table>
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <span>Subtotal</span>
+                        <span id="totalSubtotal">RD$0.00</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span>Impuestos</span>
+                        <span id="totalImpuestos">RD$0.00</span>
+                    </div>
+                    <hr />
+                    <div class="d-flex justify-content-between fw-bold fs-5">
+                        <span>Total</span>
+                        <span id="totalTotal">RD$0.00</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <button type="submit" class="btn btn-primary" id="btnConfirmar" disabled>Confirmar pedido</button>
-    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+    <button type="submit" class="btn btn-primary" id="btnConfirmar" disabled><i class="bi bi-check2-circle me-1"></i>Confirmar pedido</button>
+    <a asp-action="Index" class="btn btn-outline-secondary"><i class="bi bi-x-lg me-1"></i>Cancelar</a>
 </form>
 
 @section Scripts {

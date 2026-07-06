@@ -288,5 +288,7 @@ C:\Users\andre\Documents\DOCUMENTOS U\Programacion Avanzada\Pedidos360Proyecto\o
 C:\Users\andre\Documents\DOCUMENTOS U\Programacion Avanzada\Pedidos360Proyecto\obj\Debug\net10.0\Pedidos360Proyecto.genruntimeconfig.cache
 C:\Users\andre\Documents\DOCUMENTOS U\Programacion Avanzada\Pedidos360Proyecto\obj\Debug\net10.0\ref\Pedidos360Proyecto.dll
 C:\Users\andre\Documents\DOCUMENTOS U\Programacion Avanzada\Pedidos360Proyecto\obj\Debug\net10.0\compressed\p3inz83ef4-{0}-6ogd5opyor-6ogd5opyor.gz
-C:\Users\andre\Documents\DOCUMENTOS U\Programacion Avanzada\Pedidos360Proyecto\obj\Debug\net10.0\compressed\moiwjq8k3e-{0}-6110ua73j5-6110ua73j5.gz
-C:\Users\andre\Documents\DOCUMENTOS U\Programacion Avanzada\Pedidos360Proyecto\obj\Debug\net10.0\compressed\4r2ac3qpe6-{0}-bu0hkxprke-bu0hkxprke.gz
+C:\Users\andre\Documents\DOCUMENTOS U\Programacion Avanzada\Pedidos360Proyecto\obj\Debug\net10.0\compressed\4r2ac3qpe6-{0}-jtad7zs6qb-jtad7zs6qb.gz
+C:\Users\andre\Documents\DOCUMENTOS U\Programacion Avanzada\Pedidos360Proyecto\obj\Debug\net10.0\compressed\k9h8c423mq-{0}-ho0d1k5s6r-ho0d1k5s6r.gz
+C:\Users\andre\Documents\DOCUMENTOS U\Programacion Avanzada\Pedidos360Proyecto\obj\Debug\net10.0\compressed\moiwjq8k3e-{0}-05ocbzf1gp-05ocbzf1gp.gz
+C:\Users\andre\Documents\DOCUMENTOS U\Programacion Avanzada\Pedidos360Proyecto\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt

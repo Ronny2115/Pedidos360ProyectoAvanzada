@@ -66,9 +66,7 @@ wwwroot\lib\jquery\dist\jquery.slim.js
 wwwroot\lib\jquery\dist\jquery.slim.min.js
 wwwroot\lib\jquery\dist\jquery.slim.min.map
 wwwroot\lib\jquery\LICENSE.txt
-C:\Users\andre\Documents\DOCUMENTOS U\Programacion Avanzada\Pedidos360Proyecto\wwwroot\css\site.css
 C:\Users\andre\Documents\DOCUMENTOS U\Programacion Avanzada\Pedidos360Proyecto\wwwroot\favicon.ico
-C:\Users\andre\Documents\DOCUMENTOS U\Programacion Avanzada\Pedidos360Proyecto\wwwroot\js\site.js
 C:\Users\andre\Documents\DOCUMENTOS U\Programacion Avanzada\Pedidos360Proyecto\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 C:\Users\andre\Documents\DOCUMENTOS U\Programacion Avanzada\Pedidos360Proyecto\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
 C:\Users\andre\Documents\DOCUMENTOS U\Programacion Avanzada\Pedidos360Proyecto\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css
@@ -128,6 +126,8 @@ C:\Users\andre\Documents\DOCUMENTOS U\Programacion Avanzada\Pedidos360Proyecto\w
 C:\Users\andre\Documents\DOCUMENTOS U\Programacion Avanzada\Pedidos360Proyecto\wwwroot\lib\jquery\dist\jquery.slim.min.js
 C:\Users\andre\Documents\DOCUMENTOS U\Programacion Avanzada\Pedidos360Proyecto\wwwroot\lib\jquery\dist\jquery.slim.min.map
 C:\Users\andre\Documents\DOCUMENTOS U\Programacion Avanzada\Pedidos360Proyecto\wwwroot\lib\jquery\LICENSE.txt
-C:\Users\andre\Documents\DOCUMENTOS U\Programacion Avanzada\Pedidos360Proyecto\wwwroot\images\placeholder.svg
 C:\Users\andre\Documents\DOCUMENTOS U\Programacion Avanzada\Pedidos360Proyecto\wwwroot\js\pedido-builder.js
+C:\Users\andre\Documents\DOCUMENTOS U\Programacion Avanzada\Pedidos360Proyecto\wwwroot\css\site.css
+C:\Users\andre\Documents\DOCUMENTOS U\Programacion Avanzada\Pedidos360Proyecto\wwwroot\images\placeholder.svg
+C:\Users\andre\Documents\DOCUMENTOS U\Programacion Avanzada\Pedidos360Proyecto\wwwroot\js\site.js
 C:\Users\andre\Documents\DOCUMENTOS U\Programacion Avanzada\Pedidos360Proyecto\wwwroot\lib\bootstrap-icons\font\bootstrap-icons.css

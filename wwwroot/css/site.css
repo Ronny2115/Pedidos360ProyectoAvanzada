@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Pedidos360 — Tema "Pastelería Artesanal"
+   Pedidos360 - Tema "Pasteleria Artesanal"
    ========================================================================== */
 
 :root {
@@ -31,19 +31,27 @@ html {
   }
 }
 
-html, body {
-  position: relative;
-  min-height: 100%;
-}
-
+/* Sticky footer robusto con flexbox:
+   el body ocupa al menos toda la altura de la ventana y el contenido
+   principal (.flex-grow-1) empuja el footer al fondo sin importar
+   cuanto contenido haya. Reemplaza el hack de position:absolute que
+   hacia que el footer flotara sobre el contenido. */
 body {
-  margin-bottom: 60px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   font-family: var(--p360-font-body);
   color: var(--p360-text);
   background:
     radial-gradient(circle at 100% 0%, rgba(248, 187, 208, .18), transparent 45%),
     radial-gradient(circle at 0% 100%, rgba(217, 165, 102, .12), transparent 45%),
     var(--p360-cream);
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+footer.footer {
+  flex-shrink: 0;
 }
 
 h1, h2, h3, h4, h5, h6,
@@ -455,4 +463,65 @@ label, .form-label {
   color: var(--p360-white);
   background: linear-gradient(135deg, var(--p360-chocolate), var(--p360-pink-dark));
   margin: 0 auto 1rem;
+}
+
+/* ---------- Responsive ---------- */
+
+/* Ninguna imagen debe desbordar su contenedor */
+img {
+  max-width: 100%;
+}
+
+/* Imagen de detalle de producto: media redondeada arriba en movil,
+   a la izquierda en escritorio (evita esquinas cuadradas al apilar) */
+.p360-detalle-img {
+  width: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 767.98px) {
+  .p360-detalle-img {
+    height: 220px !important;
+    border-radius: var(--p360-radius) var(--p360-radius) 0 0 !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .p360-detalle-img {
+    height: 100%;
+    border-radius: var(--p360-radius) 0 0 var(--p360-radius) !important;
+  }
+}
+
+/* Ajustes finos para telefonos pequenos */
+@media (max-width: 575.98px) {
+  h1.h3 {
+    font-size: 1.3rem;
+  }
+
+  .p360-hero {
+    padding: 2rem 1.25rem;
+  }
+
+  .p360-hero .display-1 {
+    font-size: 3.5rem;
+  }
+
+  .p360-auth-card {
+    padding: 1.5rem;
+  }
+
+  .stat-card .stat-value {
+    font-size: 1.5rem;
+  }
+
+  /* Botones de accion en tablas: mantener icono visible y tap comodo */
+  .table .btn-sm {
+    padding: .3rem .55rem;
+  }
+
+  /* El formulario de ajuste de stock del inventario no debe encogerse */
+  .table form .form-control {
+    min-width: 72px;
+  }
 }

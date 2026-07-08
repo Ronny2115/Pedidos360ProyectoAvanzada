@@ -60,7 +60,7 @@ namespace Pedidos360Proyecto.Controllers
         {
             if (await _context.Clientes.AnyAsync(c => c.Cedula == cliente.Cedula))
             {
-                ModelState.AddModelError(nameof(cliente.Cedula), "Ya existe un cliente con esta cédula.");
+                ModelState.AddModelError(nameof(cliente.Cedula), "Ya existe un cliente con esta cedula.");
             }
 
             if (!ModelState.IsValid)
@@ -102,7 +102,7 @@ namespace Pedidos360Proyecto.Controllers
 
             if (await _context.Clientes.AnyAsync(c => c.Cedula == cliente.Cedula && c.Id != id))
             {
-                ModelState.AddModelError(nameof(cliente.Cedula), "Ya existe un cliente con esta cédula.");
+                ModelState.AddModelError(nameof(cliente.Cedula), "Ya existe un cliente con esta cedula.");
             }
 
             if (!ModelState.IsValid)

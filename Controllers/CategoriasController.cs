@@ -58,8 +58,8 @@ namespace Pedidos360Proyecto.Controllers
 
             _context.Add(categoria);
             await _context.SaveChangesAsync();
-            _logger.LogInformation("Categoría creada: {Nombre}", categoria.Nombre);
-            TempData["Success"] = "Categoría creada correctamente.";
+            _logger.LogInformation("Categoria creada: {Nombre}", categoria.Nombre);
+            TempData["Success"] = "Categoria creada correctamente.";
             return RedirectToAction(nameof(Index));
         }
 
@@ -97,7 +97,7 @@ namespace Pedidos360Proyecto.Controllers
             {
                 _context.Update(categoria);
                 await _context.SaveChangesAsync();
-                _logger.LogInformation("Categoría {Id} actualizada.", id);
+                _logger.LogInformation("Categoria {Id} actualizada.", id);
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -108,7 +108,7 @@ namespace Pedidos360Proyecto.Controllers
                 throw;
             }
 
-            TempData["Success"] = "Categoría actualizada correctamente.";
+            TempData["Success"] = "Categoria actualizada correctamente.";
             return RedirectToAction(nameof(Index));
         }
 
@@ -141,14 +141,14 @@ namespace Pedidos360Proyecto.Controllers
             var tieneProductos = await _context.Productos.AnyAsync(p => p.CategoriaId == id);
             if (tieneProductos)
             {
-                TempData["Error"] = "No se puede eliminar la categoría porque tiene productos asociados.";
+                TempData["Error"] = "No se puede eliminar la categoria porque tiene productos asociados.";
                 return RedirectToAction(nameof(Index));
             }
 
             _context.Categorias.Remove(categoria);
             await _context.SaveChangesAsync();
-            _logger.LogInformation("Categoría {Id} eliminada.", id);
-            TempData["Success"] = "Categoría eliminada correctamente.";
+            _logger.LogInformation("Categoria {Id} eliminada.", id);
+            TempData["Success"] = "Categoria eliminada correctamente.";
             return RedirectToAction(nameof(Index));
         }
     }

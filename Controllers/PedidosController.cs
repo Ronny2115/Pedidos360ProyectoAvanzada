@@ -77,7 +77,7 @@ namespace Pedidos360Proyecto.Controllers
             var clienteExiste = model.ClienteId > 0 && await _context.Clientes.AnyAsync(c => c.Id == model.ClienteId);
             if (!clienteExiste)
             {
-                ModelState.AddModelError(nameof(model.ClienteId), "Debe seleccionar un cliente válido.");
+                ModelState.AddModelError(nameof(model.ClienteId), "Debe seleccionar un cliente valido.");
             }
 
             if (!ModelState.IsValid)

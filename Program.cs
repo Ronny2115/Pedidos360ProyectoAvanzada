@@ -1,4 +1,6 @@
+using System.Globalization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
 using Pedidos360Proyecto.Data;
 using Pedidos360Proyecto.Services;
@@ -35,6 +37,18 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/Errors/500");
     app.UseHsts();
 }
+
+// Cultura fija en-US para que los montos se muestren como $25.00
+// (signo de dolar, punto decimal y coma de miles) de forma uniforme en
+// toda la aplicacion, y para que el binding de decimales use punto decimal.
+var culturaMontos = new CultureInfo("en-US");
+var opcionesLocalizacion = new RequestLocalizationOptions
+{
+    DefaultRequestCulture = new RequestCulture(culturaMontos),
+    SupportedCultures = new[] { culturaMontos },
+    SupportedUICultures = new[] { culturaMontos }
+};
+app.UseRequestLocalization(opcionesLocalizacion);
 
 app.UseStatusCodePagesWithReExecute("/Errors/{0}");
 

@@ -19,7 +19,7 @@ namespace Pedidos360Proyecto.Controllers
 
             if (statusCode == 404)
             {
-                _logger.LogWarning("Página no encontrada: {Path}", HttpContext.Request.Path);
+                _logger.LogWarning("Pagina no encontrada: {Path}", HttpContext.Request.Path);
                 return View("Error404");
             }
 

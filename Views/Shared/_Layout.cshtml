@@ -36,7 +36,7 @@
                         @if (User.IsInRole("Admin"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link @EsActivo("Categorias")" asp-area="" asp-controller="Categorias" asp-action="Index"><i class="bi bi-tags me-1"></i>Categorías</a>
+                                <a class="nav-link @EsActivo("Categorias")" asp-area="" asp-controller="Categorias" asp-action="Index"><i class="bi bi-tags me-1"></i>Categorias</a>
                             </li>
                         }
                         @if (User.IsInRole("Admin") || User.IsInRole("Ventas") || User.IsInRole("Operaciones"))
@@ -69,7 +69,7 @@
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="container flex-grow-1">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
@@ -77,7 +77,7 @@
 
     <footer class="border-top footer">
         <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
-            <span><i class="bi bi-cake2-fill me-1"></i>&copy; 2026 Pedidos360 — Pastelería Artesanal</span>
+            <span><i class="bi bi-cake2-fill me-1"></i>&copy; 2026 Pedidos360 — Pasteleria Artesanal</span>
             <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacidad</a>
         </div>
     </footer>

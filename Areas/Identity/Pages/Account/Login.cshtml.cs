@@ -30,7 +30,7 @@ namespace Pedidos360Proyecto.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required(ErrorMessage = "El correo es obligatorio.")]
-            [EmailAddress(ErrorMessage = "El correo no tiene un formato válido.")]
+            [EmailAddress(ErrorMessage = "El correo no tiene un formato valido.")]
             public string Email { get; set; } = string.Empty;
 
             [Required(ErrorMessage = "La contraseña es obligatoria.")]
@@ -64,7 +64,7 @@ namespace Pedidos360Proyecto.Areas.Identity.Pages.Account
                 var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
-                    _logger.LogInformation("Usuario {Email} inició sesión.", Input.Email);
+                    _logger.LogInformation("Usuario {Email} inicio sesion.", Input.Email);
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)
@@ -77,7 +77,7 @@ namespace Pedidos360Proyecto.Areas.Identity.Pages.Account
                     return RedirectToPage("./Lockout");
                 }
 
-                ModelState.AddModelError(string.Empty, "Intento de inicio de sesión inválido.");
+                ModelState.AddModelError(string.Empty, "Intento de inicio de sesion invalido.");
                 return Page();
             }
 

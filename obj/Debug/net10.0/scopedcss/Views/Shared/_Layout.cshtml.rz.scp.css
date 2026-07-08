@@ -1,5 +1,6 @@
-/* Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
+/* Estilos scoped del layout.
+   El posicionamiento del footer y los colores se manejan en site.css (tema Pasteleria).
+   Este archivo se mantiene minimo para evitar conflictos con el tema. */
 
 a.navbar-brand[b-l6e1ue87z7] {
   white-space: normal;
@@ -7,42 +8,6 @@ a.navbar-brand[b-l6e1ue87z7] {
   word-break: break-all;
 }
 
-a[b-l6e1ue87z7] {
-  color: #0077cc;
-}
-
-.btn-primary[b-l6e1ue87z7] {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
-
-.nav-pills .nav-link.active[b-l6e1ue87z7], .nav-pills .show > .nav-link[b-l6e1ue87z7] {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
-
-.border-top[b-l6e1ue87z7] {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom[b-l6e1ue87z7] {
-  border-bottom: 1px solid #e5e5e5;
-}
-
 .box-shadow[b-l6e1ue87z7] {
   box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
-}
-
-button.accept-policy[b-l6e1ue87z7] {
-  font-size: 1rem;
-  line-height: inherit;
-}
-
-.footer[b-l6e1ue87z7] {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px;
 }

@@ -9,8 +9,8 @@
     <div class="p360-hero text-center mb-4">
         <div class="display-1 mb-2"><i class="bi bi-cake2"></i></div>
         <h1 class="display-5 fw-bold">Pedidos360</h1>
-        <p class="lead mb-4">Administra categorías, productos, clientes, inventario y pedidos desde un solo lugar,<br />con el mismo cuidado que ponemos en cada receta.</p>
-        <a asp-area="Identity" asp-page="/Account/Login" class="btn btn-light btn-lg"><i class="bi bi-box-arrow-in-right me-1"></i>Iniciar sesión</a>
+        <p class="lead mb-4">Administra categorias, productos, clientes, inventario y pedidos desde un solo lugar,<br />con el mismo cuidado que ponemos en cada receta.</p>
+        <a asp-area="Identity" asp-page="/Account/Login" class="btn btn-light btn-lg"><i class="bi bi-box-arrow-in-right me-1"></i>Iniciar sesion</a>
     </div>
 }
 else
@@ -29,7 +29,7 @@ else
                 <div class="card stat-card p-3 text-center">
                     <div class="stat-icon"><i class="bi bi-tags"></i></div>
                     <div class="stat-value">@Model.TotalCategorias</div>
-                    <div class="text-muted">Categorías</div>
+                    <div class="text-muted">Categorias</div>
                 </div>
             </div>
         }
@@ -65,7 +65,7 @@ else
         }
     </div>
 
-    <h2 class="h5 mb-3"><i class="bi bi-stars text-body-secondary me-1"></i>Accesos rápidos</h2>
+    <h2 class="h5 mb-3"><i class="bi bi-stars text-body-secondary me-1"></i>Accesos rapidos</h2>
     <div class="row g-3 mb-4">
         @if (User.IsInRole("Admin"))
         {
@@ -75,8 +75,8 @@ else
                         <div class="d-flex align-items-center gap-3">
                             <div class="module-icon"><i class="bi bi-tags"></i></div>
                             <div>
-                                <div class="fw-semibold text-body">Categorías</div>
-                                <div class="text-muted small">Administrar categorías de productos</div>
+                                <div class="fw-semibold text-body">Categorias</div>
+                                <div class="text-muted small">Administrar categorias de productos</div>
                             </div>
                         </div>
                     </div>
@@ -92,7 +92,7 @@ else
                             <div class="module-icon"><i class="bi bi-cake2"></i></div>
                             <div>
                                 <div class="fw-semibold text-body">Productos</div>
-                                <div class="text-muted small">Catálogo, precios y stock</div>
+                                <div class="text-muted small">Catalogo, precios y stock</div>
                             </div>
                         </div>
                     </div>
@@ -108,7 +108,7 @@ else
                             <div class="module-icon"><i class="bi bi-people"></i></div>
                             <div>
                                 <div class="fw-semibold text-body">Clientes</div>
-                                <div class="text-muted small">Registro y búsqueda de clientes</div>
+                                <div class="text-muted small">Registro y busqueda de clientes</div>
                             </div>
                         </div>
                     </div>
@@ -181,11 +181,11 @@ else
         {
             <div class="col-md-6">
                 <div class="card h-100">
-                    <div class="card-header"><i class="bi bi-clock-history me-1"></i>Últimos pedidos</div>
+                    <div class="card-header"><i class="bi bi-clock-history me-1"></i>Ultimos pedidos</div>
                     <ul class="list-group list-group-flush">
                         @if (Model.UltimosPedidos.Count == 0)
                         {
-                            <li class="list-group-item text-muted">Aún no se han registrado pedidos.</li>
+                            <li class="list-group-item text-muted">Aun no se han registrado pedidos.</li>
                         }
                         else
                         {

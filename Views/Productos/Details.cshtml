@@ -9,14 +9,14 @@
 <div class="card">
     <div class="row g-0">
         <div class="col-md-4">
-            <img src="@Model.ImagenUrl" class="img-fluid rounded-start h-100" style="object-fit:cover;" alt="@Model.Nombre" />
+            <img src="@Model.ImagenUrl" class="p360-detalle-img" alt="@Model.Nombre" />
         </div>
         <div class="col-md-8">
             <div class="card-body p-4">
                 <dl class="row mb-3">
                     <dt class="col-sm-3"><i class="bi bi-cake2 me-1"></i>Nombre</dt>
                     <dd class="col-sm-9">@Model.Nombre</dd>
-                    <dt class="col-sm-3"><i class="bi bi-tag me-1"></i>Categoría</dt>
+                    <dt class="col-sm-3"><i class="bi bi-tag me-1"></i>Categoria</dt>
                     <dd class="col-sm-9">@Model.Categoria?.Nombre</dd>
                     <dt class="col-sm-3"><i class="bi bi-currency-dollar me-1"></i>Precio</dt>
                     <dd class="col-sm-9">@Model.Precio.ToString("C")</dd>
@@ -28,7 +28,7 @@
                     <dd class="col-sm-9">
                         @if (Model.Activo)
                         {
-                            <span class="badge bg-success-subtle text-success-emphasis"><i class="bi bi-check-circle me-1"></i>Sí</span>
+                            <span class="badge bg-success-subtle text-success-emphasis"><i class="bi bi-check-circle me-1"></i>Si</span>
                         }
                         else
                         {

@@ -9,8 +9,8 @@ namespace Pedidos360Proyecto.Models.ViewModels
         [Display(Name = "Nombre")]
         public string Nombre { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "La categoría es obligatoria.")]
-        [Display(Name = "Categoría")]
+        [Required(ErrorMessage = "La categoria es obligatoria.")]
+        [Display(Name = "Categoria")]
         public int CategoriaId { get; set; }
 
         [Required(ErrorMessage = "El precio es obligatorio.")]

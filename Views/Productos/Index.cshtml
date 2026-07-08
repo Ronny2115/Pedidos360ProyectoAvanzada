@@ -30,7 +30,7 @@
     </div>
     <div class="col-md-4">
         <select name="categoriaId" class="form-select">
-            <option value="">Todas las categorías</option>
+            <option value="">Todas las categorias</option>
             @foreach (var categoria in Model.Categorias)
             {
                 <option value="@categoria.Id" selected="@(Model.CategoriaId == categoria.Id)">@categoria.Nombre</option>

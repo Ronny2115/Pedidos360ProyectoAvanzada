@@ -11,7 +11,7 @@
     var $btnConfirmar = $("#btnConfirmar");
 
     function formatoMoneda(valor) {
-        return "RD$" + Number(valor).toFixed(2);
+        return "$" + Number(valor).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     }
 
     $buscarProducto.on("input", function () {
@@ -87,7 +87,7 @@
         $lineasInputs.empty();
 
         if (lineas.length === 0) {
-            $lineasBody.append("<tr id='sinLineas'><td colspan='6' class='text-center text-muted py-4'><i class='bi bi-basket3 fs-4 d-block mb-1'></i>Aún no ha agregado productos.</td></tr>");
+            $lineasBody.append("<tr id='sinLineas'><td colspan='6' class='text-center text-muted py-4'><i class='bi bi-basket3 fs-4 d-block mb-1'></i>Aun no ha agregado productos.</td></tr>");
             $btnConfirmar.prop("disabled", true);
             actualizarTotales({ subtotal: 0, impuestos: 0, total: 0 });
             return;

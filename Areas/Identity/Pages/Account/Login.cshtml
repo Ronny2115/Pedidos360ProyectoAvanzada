@@ -9,7 +9,7 @@
     <div class="col-md-5">
         <div class="p360-auth-card">
             <div class="text-center mb-3">
-                <div class="p360-auth-icon"><i class="bi bi-cup-hot-fill"></i></div>
+                <div class="p360-auth-icon"><i class="bi bi-cup-hot-fill" aria-hidden="true"></i></div>
                 <h1 class="h3 mb-1">Bienvenido de nuevo</h1>
                 <p class="text-muted">Inicia sesion para continuar en Pedidos360</p>
             </div>
@@ -17,13 +17,13 @@
                 <form id="account" method="post">
                     <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
                     <div class="form-floating mb-3">
-                        <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="nombre@ejemplo.com" />
-                        <label asp-for="Input.Email"><i class="bi bi-envelope me-1"></i>Correo electronico</label>
+                        <input asp-for="Input.Email" class="form-control" autocomplete="username" spellcheck="false" aria-required="true" placeholder="nombre@ejemplo.com" />
+                        <label asp-for="Input.Email"><i class="bi bi-envelope me-1" aria-hidden="true"></i>Correo electronico</label>
                         <span asp-validation-for="Input.Email" class="text-danger"></span>
                     </div>
                     <div class="form-floating mb-3">
                         <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="contraseña" />
-                        <label asp-for="Input.Password"><i class="bi bi-lock me-1"></i>Contraseña</label>
+                        <label asp-for="Input.Password"><i class="bi bi-lock me-1" aria-hidden="true"></i>Contraseña</label>
                         <span asp-validation-for="Input.Password" class="text-danger"></span>
                     </div>
                     <div class="checkbox mb-3">
@@ -33,7 +33,7 @@
                         </label>
                     </div>
                     <div>
-                        <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary"><i class="bi bi-box-arrow-in-right me-1"></i>Iniciar sesion</button>
+                        <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary"><i class="bi bi-box-arrow-in-right me-1" aria-hidden="true"></i>Iniciar sesion</button>
                     </div>
                 </form>
             </section>

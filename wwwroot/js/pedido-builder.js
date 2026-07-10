@@ -54,7 +54,7 @@
                     $buscarProducto.val("");
                     $resultados.empty();
                 });
-            $item.append($("<i class='bi bi-cookie text-body-secondary'></i>"));
+            $item.append($("<i class='bi bi-cookie text-body-secondary' aria-hidden='true'></i>"));
             $item.append($("<span></span>").text(producto.nombre + " — " + formatoMoneda(producto.precio) + " (stock: " + producto.stock + ")"));
             $resultados.append($item);
         });
@@ -87,7 +87,7 @@
         $lineasInputs.empty();
 
         if (lineas.length === 0) {
-            $lineasBody.append("<tr id='sinLineas'><td colspan='6' class='text-center text-muted py-4'><i class='bi bi-basket3 fs-4 d-block mb-1'></i>Aun no ha agregado productos.</td></tr>");
+            $lineasBody.append("<tr id='sinLineas'><td colspan='6' class='text-center text-muted py-4'><i class='bi bi-basket3 fs-4 d-block mb-1' aria-hidden='true'></i>Aun no ha agregado productos.</td></tr>");
             $btnConfirmar.prop("disabled", true);
             actualizarTotales({ subtotal: 0, impuestos: 0, total: 0 });
             return;
@@ -95,19 +95,25 @@
 
         lineas.forEach(function (linea, index) {
             var $row = $("<tr></tr>").attr("data-index", index);
-            $row.append($("<td></td>").append($("<i class='bi bi-cookie text-body-secondary me-1'></i>"), document.createTextNode(linea.nombre)));
+            $row.append($("<td></td>").append($("<i class='bi bi-cookie text-body-secondary me-2' aria-hidden='true'></i>"), document.createTextNode(linea.nombre)));
             $row.append($("<td></td>").append(
-                $("<input type='number' min='1' class='form-control form-control-sm cantidad-input' />").val(linea.cantidad)
+                $("<input type='number' min='1' class='form-control form-control-sm cantidad-input text-num' />")
+                    .attr("aria-label", "Cantidad de " + linea.nombre)
+                    .val(linea.cantidad)
             ));
             $row.append($("<td></td>").append(
-                $("<input type='number' min='0' max='100' step='0.01' class='form-control form-control-sm descuento-input' />").val(linea.descuento)
+                $("<input type='number' min='0' max='100' step='0.01' class='form-control form-control-sm descuento-input text-num' />")
+                    .attr("aria-label", "Descuento de " + linea.nombre)
+                    .val(linea.descuento)
             ));
-            $row.append($("<td></td>").text(formatoMoneda(linea.precioUnit)));
-            $row.append($("<td class='total-linea'></td>").text("..."));
-            $row.append($("<td></td>").append(
-                $("<button type='button' class='btn btn-sm btn-outline-danger' title='Eliminar'><i class=\"bi bi-trash\"></i></button>").on("click", function () {
-                    eliminarLinea(index);
-                })
+            $row.append($("<td class='text-end text-num'></td>").text(formatoMoneda(linea.precioUnit)));
+            $row.append($("<td class='total-linea text-end text-num'></td>").text("…"));
+            $row.append($("<td class='text-end'></td>").append(
+                $("<button type='button' class='btn btn-sm btn-outline-danger' title='Eliminar'><i class=\"bi bi-trash\" aria-hidden=\"true\"></i></button>")
+                    .attr("aria-label", "Quitar " + linea.nombre + " del pedido")
+                    .on("click", function () {
+                        eliminarLinea(index);
+                    })
             ));
             $lineasBody.append($row);
 

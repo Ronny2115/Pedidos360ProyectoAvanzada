@@ -1,0 +1,16 @@
+@* Avisos de resultado de operaciones (TempData). role="status"/"alert"
+   anuncia el mensaje a lectores de pantalla; el boton permite descartarlo. *@
+@if (TempData["Success"] is not null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="status">
+        <i class="bi bi-check-circle me-2" aria-hidden="true"></i>@TempData["Success"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar aviso"></button>
+    </div>
+}
+@if (TempData["Error"] is not null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <i class="bi bi-exclamation-triangle me-2" aria-hidden="true"></i>@TempData["Error"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar aviso"></button>
+    </div>
+}

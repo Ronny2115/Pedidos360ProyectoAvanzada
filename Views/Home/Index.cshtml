@@ -7,10 +7,10 @@
 @if (!(User.Identity?.IsAuthenticated ?? false))
 {
     <div class="p360-hero text-center mb-4">
-        <div class="display-1 mb-2"><i class="bi bi-cake2"></i></div>
+        <div class="display-1 mb-2"><i class="bi bi-cake2" aria-hidden="true"></i></div>
         <h1 class="display-5 fw-bold">Pedidos360</h1>
         <p class="lead mb-4">Administra categorias, productos, clientes, inventario y pedidos desde un solo lugar,<br />con el mismo cuidado que ponemos en cada receta.</p>
-        <a asp-area="Identity" asp-page="/Account/Login" class="btn btn-light btn-lg"><i class="bi bi-box-arrow-in-right me-1"></i>Iniciar sesion</a>
+        <a asp-area="Identity" asp-page="/Account/Login" class="btn btn-light btn-lg"><i class="bi bi-box-arrow-in-right me-1" aria-hidden="true"></i>Iniciar sesion</a>
     </div>
 }
 else
@@ -18,7 +18,7 @@ else
     var rol = User.IsInRole("Admin") ? "Admin" : User.IsInRole("Ventas") ? "Ventas" : User.IsInRole("Operaciones") ? "Operaciones" : "Usuario";
 
     <div class="mb-4">
-        <h1 class="h3 mb-1"><i class="bi bi-cup-hot text-body-secondary me-1"></i>Bienvenido, @User.Identity!.Name</h1>
+        <h1 class="h3 mb-1"><i class="bi bi-cup-hot text-body-secondary me-1" aria-hidden="true"></i>Bienvenido, @User.Identity!.Name</h1>
         <p class="text-muted">Rol: <span class="badge role-badge">@rol</span></p>
     </div>
 
@@ -27,7 +27,7 @@ else
         {
             <div class="col-6 col-md-3">
                 <div class="card stat-card p-3 text-center">
-                    <div class="stat-icon"><i class="bi bi-tags"></i></div>
+                    <div class="stat-icon"><i class="bi bi-tags" aria-hidden="true"></i></div>
                     <div class="stat-value">@Model.TotalCategorias</div>
                     <div class="text-muted">Categorias</div>
                 </div>
@@ -37,7 +37,7 @@ else
         {
             <div class="col-6 col-md-3">
                 <div class="card stat-card p-3 text-center">
-                    <div class="stat-icon"><i class="bi bi-cake2"></i></div>
+                    <div class="stat-icon"><i class="bi bi-cake2" aria-hidden="true"></i></div>
                     <div class="stat-value">@Model.TotalProductosActivos</div>
                     <div class="text-muted">Productos activos</div>
                 </div>
@@ -47,7 +47,7 @@ else
         {
             <div class="col-6 col-md-3">
                 <div class="card stat-card p-3 text-center">
-                    <div class="stat-icon"><i class="bi bi-people"></i></div>
+                    <div class="stat-icon"><i class="bi bi-people" aria-hidden="true"></i></div>
                     <div class="stat-value">@Model.TotalClientes</div>
                     <div class="text-muted">Clientes</div>
                 </div>
@@ -57,7 +57,7 @@ else
         {
             <div class="col-6 col-md-3">
                 <div class="card stat-card p-3 text-center">
-                    <div class="stat-icon"><i class="bi bi-receipt"></i></div>
+                    <div class="stat-icon"><i class="bi bi-receipt" aria-hidden="true"></i></div>
                     <div class="stat-value">@Model.TotalPedidos</div>
                     <div class="text-muted">Pedidos totales</div>
                 </div>
@@ -65,7 +65,7 @@ else
         }
     </div>
 
-    <h2 class="h5 mb-3"><i class="bi bi-stars text-body-secondary me-1"></i>Accesos rapidos</h2>
+    <h2 class="h5 mb-3"><i class="bi bi-stars text-body-secondary me-1" aria-hidden="true"></i>Accesos rapidos</h2>
     <div class="row g-3 mb-4">
         @if (User.IsInRole("Admin"))
         {
@@ -73,7 +73,7 @@ else
                 <a asp-controller="Categorias" asp-action="Index" class="text-decoration-none p360-card-link">
                     <div class="card module-card p-3">
                         <div class="d-flex align-items-center gap-3">
-                            <div class="module-icon"><i class="bi bi-tags"></i></div>
+                            <div class="module-icon"><i class="bi bi-tags" aria-hidden="true"></i></div>
                             <div>
                                 <div class="fw-semibold text-body">Categorias</div>
                                 <div class="text-muted small">Administrar categorias de productos</div>
@@ -89,7 +89,7 @@ else
                 <a asp-controller="Productos" asp-action="Index" class="text-decoration-none p360-card-link">
                     <div class="card module-card p-3">
                         <div class="d-flex align-items-center gap-3">
-                            <div class="module-icon"><i class="bi bi-cake2"></i></div>
+                            <div class="module-icon"><i class="bi bi-cake2" aria-hidden="true"></i></div>
                             <div>
                                 <div class="fw-semibold text-body">Productos</div>
                                 <div class="text-muted small">Catalogo, precios y stock</div>
@@ -105,7 +105,7 @@ else
                 <a asp-controller="Clientes" asp-action="Index" class="text-decoration-none p360-card-link">
                     <div class="card module-card p-3">
                         <div class="d-flex align-items-center gap-3">
-                            <div class="module-icon"><i class="bi bi-people"></i></div>
+                            <div class="module-icon"><i class="bi bi-people" aria-hidden="true"></i></div>
                             <div>
                                 <div class="fw-semibold text-body">Clientes</div>
                                 <div class="text-muted small">Registro y busqueda de clientes</div>
@@ -121,7 +121,7 @@ else
                 <a asp-controller="Pedidos" asp-action="Index" class="text-decoration-none p360-card-link">
                     <div class="card module-card p-3">
                         <div class="d-flex align-items-center gap-3">
-                            <div class="module-icon"><i class="bi bi-receipt"></i></div>
+                            <div class="module-icon"><i class="bi bi-receipt" aria-hidden="true"></i></div>
                             <div>
                                 <div class="fw-semibold text-body">Pedidos</div>
                                 <div class="text-muted small">Crear y consultar pedidos</div>
@@ -137,7 +137,7 @@ else
                 <a asp-controller="Inventario" asp-action="Index" class="text-decoration-none p360-card-link">
                     <div class="card module-card p-3">
                         <div class="d-flex align-items-center gap-3">
-                            <div class="module-icon"><i class="bi bi-box-seam"></i></div>
+                            <div class="module-icon"><i class="bi bi-box-seam" aria-hidden="true"></i></div>
                             <div>
                                 <div class="fw-semibold text-body">Inventario</div>
                                 <div class="text-muted small">Ajustar stock de productos</div>
@@ -154,25 +154,25 @@ else
         {
             <div class="col-md-6">
                 <div class="card h-100">
-                    <div class="card-header"><i class="bi bi-exclamation-triangle me-1"></i>Productos con stock bajo (≤ @Model.StockBajoUmbral)</div>
+                    <div class="card-header"><i class="bi bi-exclamation-triangle me-1" aria-hidden="true"></i>Productos con stock bajo (≤ @Model.StockBajoUmbral)</div>
                     <ul class="list-group list-group-flush">
                         @if (Model.ProductosStockBajo.Count == 0)
                         {
-                            <li class="list-group-item text-muted"><i class="bi bi-check-circle me-1"></i>No hay productos con stock bajo.</li>
+                            <li class="list-group-item text-muted"><i class="bi bi-check-circle me-1" aria-hidden="true"></i>No hay productos con stock bajo.</li>
                         }
                         else
                         {
                             @foreach (var producto in Model.ProductosStockBajo)
                             {
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <span><i class="bi bi-cookie text-body-secondary me-2"></i>@producto.Nombre</span>
+                                    <span><i class="bi bi-cookie text-body-secondary me-2" aria-hidden="true"></i>@producto.Nombre</span>
                                     <span class="badge bg-danger rounded-pill">@producto.Stock</span>
                                 </li>
                             }
                         }
                     </ul>
                     <div class="card-footer text-end">
-                        <a asp-controller="Inventario" asp-action="Index" class="btn btn-sm btn-outline-primary"><i class="bi bi-box-seam me-1"></i>Ir a Inventario</a>
+                        <a asp-controller="Inventario" asp-action="Index" class="btn btn-sm btn-outline-primary"><i class="bi bi-box-seam me-1" aria-hidden="true"></i>Ir a Inventario</a>
                     </div>
                 </div>
             </div>
@@ -181,7 +181,7 @@ else
         {
             <div class="col-md-6">
                 <div class="card h-100">
-                    <div class="card-header"><i class="bi bi-clock-history me-1"></i>Ultimos pedidos</div>
+                    <div class="card-header"><i class="bi bi-clock-history me-1" aria-hidden="true"></i>Ultimos pedidos</div>
                     <ul class="list-group list-group-flush">
                         @if (Model.UltimosPedidos.Count == 0)
                         {
@@ -192,14 +192,14 @@ else
                             @foreach (var pedido in Model.UltimosPedidos)
                             {
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <span><i class="bi bi-receipt text-body-secondary me-2"></i>#@pedido.Id — @pedido.Cliente?.Nombre</span>
+                                    <span><i class="bi bi-receipt text-body-secondary me-2" aria-hidden="true"></i>#@pedido.Id — @pedido.Cliente?.Nombre</span>
                                     <span class="fw-semibold">@pedido.Total.ToString("C")</span>
                                 </li>
                             }
                         }
                     </ul>
                     <div class="card-footer text-end">
-                        <a asp-controller="Pedidos" asp-action="Index" class="btn btn-sm btn-outline-primary"><i class="bi bi-receipt me-1"></i>Ir a Pedidos</a>
+                        <a asp-controller="Pedidos" asp-action="Index" class="btn btn-sm btn-outline-primary"><i class="bi bi-receipt me-1" aria-hidden="true"></i>Ir a Pedidos</a>
                     </div>
                 </div>
             </div>

@@ -4,32 +4,26 @@
     ViewData["Title"] = "Clientes";
 }
 
-<div class="d-flex justify-content-between align-items-center mb-3">
-    <h1 class="h3 mb-0"><i class="bi bi-people me-2"></i>Clientes</h1>
-    <a asp-action="Create" class="btn btn-primary"><i class="bi bi-person-plus me-1"></i>Nuevo cliente</a>
+<div class="page-header mb-3">
+    <h1 class="h3 mb-0"><i class="bi bi-people me-2" aria-hidden="true"></i>Clientes</h1>
+    <a asp-action="Create" class="btn btn-primary"><i class="bi bi-person-plus me-1" aria-hidden="true"></i>Nuevo cliente</a>
 </div>
 
-@if (TempData["Success"] is not null)
-{
-    <div class="alert alert-success"><i class="bi bi-check-circle me-1"></i>@TempData["Success"]</div>
-}
-@if (TempData["Error"] is not null)
-{
-    <div class="alert alert-danger"><i class="bi bi-exclamation-triangle me-1"></i>@TempData["Error"]</div>
-}
+<partial name="_Alertas" />
 
 <form method="get" asp-action="Index" class="row g-2 mb-3">
     <div class="col-md-6">
+        <label for="busquedaClientes" class="visually-hidden">Buscar por nombre o cedula</label>
         <div class="input-group">
-            <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
-            <input type="text" name="busqueda" value="@ViewBag.Busqueda" class="form-control" placeholder="Buscar por nombre o cedula" />
+            <span class="input-group-text bg-white"><i class="bi bi-search" aria-hidden="true"></i></span>
+            <input type="search" id="busquedaClientes" name="busqueda" value="@ViewBag.Busqueda" class="form-control" placeholder="Buscar por nombre o cedula…" autocomplete="off" />
         </div>
     </div>
     <div class="col-md-2">
         <button type="submit" class="btn btn-outline-primary w-100">Buscar</button>
     </div>
     <div class="col-md-2">
-        <a asp-action="Index" class="btn btn-outline-secondary w-100"><i class="bi bi-x-lg me-1"></i>Limpiar</a>
+        <a asp-action="Index" class="btn btn-outline-secondary w-100"><i class="bi bi-x-lg me-1" aria-hidden="true"></i>Limpiar</a>
     </div>
 </form>
 
@@ -45,17 +39,27 @@
             </tr>
         </thead>
         <tbody>
+@if (!Model.Any())
+{
+            <tr>
+                <td colspan="5" class="p360-vacio">
+                    <i class="bi bi-people" aria-hidden="true"></i>
+                    No se encontraron clientes.
+                    <a asp-action="Create">Registrar un cliente</a>
+                </td>
+            </tr>
+}
 @foreach (var item in Model)
 {
             <tr>
-                <td><i class="bi bi-person-circle text-body-secondary me-2"></i>@item.Nombre</td>
-                <td>@item.Cedula</td>
+                <td><i class="bi bi-person-circle text-body-secondary me-2" aria-hidden="true"></i>@item.Nombre</td>
+                <td class="text-num">@item.Cedula</td>
                 <td>@item.Correo</td>
-                <td>@item.Telefono</td>
+                <td class="text-num">@item.Telefono</td>
                 <td class="text-end">
-                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary" title="Ver"><i class="bi bi-eye"></i></a>
-                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary" title="Editar"><i class="bi bi-pencil"></i></a>
-                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger" title="Eliminar"><i class="bi bi-trash"></i></a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary" title="Ver" aria-label="Ver cliente @item.Nombre"><i class="bi bi-eye" aria-hidden="true"></i></a>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary" title="Editar" aria-label="Editar cliente @item.Nombre"><i class="bi bi-pencil" aria-hidden="true"></i></a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger" title="Eliminar" aria-label="Eliminar cliente @item.Nombre"><i class="bi bi-trash" aria-hidden="true"></i></a>
                 </td>
             </tr>
 }

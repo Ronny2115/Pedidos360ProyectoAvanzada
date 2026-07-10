@@ -4,18 +4,15 @@
     ViewData["Title"] = "Pedidos";
 }
 
-<div class="d-flex justify-content-between align-items-center mb-3">
-    <h1 class="h3 mb-0"><i class="bi bi-receipt me-2"></i>Pedidos</h1>
+<div class="page-header mb-3">
+    <h1 class="h3 mb-0"><i class="bi bi-receipt me-2" aria-hidden="true"></i>Pedidos</h1>
     @if (User.IsInRole("Admin") || User.IsInRole("Ventas"))
     {
-        <a asp-action="Create" class="btn btn-primary"><i class="bi bi-plus-circle me-1"></i>Nuevo pedido</a>
+        <a asp-action="Create" class="btn btn-primary"><i class="bi bi-plus-circle me-1" aria-hidden="true"></i>Nuevo pedido</a>
     }
 </div>
 
-@if (TempData["Success"] is not null)
-{
-    <div class="alert alert-success"><i class="bi bi-check-circle me-1"></i>@TempData["Success"]</div>
-}
+<partial name="_Alertas" />
 
 <div class="table-responsive">
     <table class="table table-hover align-middle mb-0">
@@ -25,32 +22,45 @@
                 <th>Cliente</th>
                 <th>Usuario</th>
                 <th>Fecha</th>
-                <th>Total</th>
+                <th class="text-end">Total</th>
                 <th>Estado</th>
                 <th class="text-end">Acciones</th>
             </tr>
         </thead>
         <tbody>
+@if (!Model.Any())
+{
+            <tr>
+                <td colspan="7" class="p360-vacio">
+                    <i class="bi bi-receipt" aria-hidden="true"></i>
+                    Aun no se han registrado pedidos.
+                    @if (User.IsInRole("Admin") || User.IsInRole("Ventas"))
+                    {
+                        <a asp-action="Create">Crear el primer pedido</a>
+                    }
+                </td>
+            </tr>
+}
 @foreach (var item in Model)
 {
             <tr>
-                <td>#@item.Id</td>
-                <td><i class="bi bi-person-circle text-body-secondary me-1"></i>@item.Cliente?.Nombre</td>
+                <td class="text-num">#@item.Id</td>
+                <td><i class="bi bi-person-circle text-body-secondary me-2" aria-hidden="true"></i>@item.Cliente?.Nombre</td>
                 <td>@item.Usuario?.Email</td>
-                <td>@item.Fecha.ToString("dd/MM/yyyy HH:mm")</td>
-                <td class="fw-semibold">@item.Total.ToString("C")</td>
+                <td class="text-num">@item.Fecha.ToString("dd/MM/yyyy HH:mm")</td>
+                <td class="fw-semibold text-end text-num">@item.Total.ToString("C")</td>
                 <td>
                     @if (item.Estado == EstadoPedido.Confirmado)
                     {
-                        <span class="badge bg-success-subtle text-success-emphasis"><i class="bi bi-check-circle me-1"></i>@item.Estado</span>
+                        <span class="badge bg-success-subtle text-success-emphasis"><i class="bi bi-check-circle me-1" aria-hidden="true"></i>@item.Estado</span>
                     }
                     else
                     {
-                        <span class="badge bg-secondary"><i class="bi bi-x-circle me-1"></i>@item.Estado</span>
+                        <span class="badge bg-secondary"><i class="bi bi-x-circle me-1" aria-hidden="true"></i>@item.Estado</span>
                     }
                 </td>
                 <td class="text-end">
-                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary" title="Ver"><i class="bi bi-eye"></i></a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary" title="Ver" aria-label="Ver pedido @item.Id"><i class="bi bi-eye" aria-hidden="true"></i></a>
                 </td>
             </tr>
 }

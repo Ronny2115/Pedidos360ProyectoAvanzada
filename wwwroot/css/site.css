@@ -1,8 +1,10 @@
 /* ==========================================================================
-   Pedidos360 - Tema "Pasteleria Artesanal"
+   Pedidos360 - Sistema de diseño "Pasteleria Artesanal"
+   Tokens semanticos + componentes. Display: Fraunces. Cuerpo: Nunito.
    ========================================================================== */
 
 :root {
+  /* Paleta base (fijada por la marca) */
   --p360-pink: #F8BBD0;
   --p360-pink-dark: #E893B3;
   --p360-cream: #FFF8E7;
@@ -13,12 +15,25 @@
   --p360-gold: #D9A566;
   --p360-gold-light: #F0CE96;
   --p360-text: #4A3B34;
+
+  /* Tokens semanticos de estado (un solo rojo, un solo verde en toda la app) */
+  --p360-danger: #C96455;
+  --p360-danger-dark: #8C3B30;
+  --p360-danger-soft: #FBE7E4;
+  --p360-success: #5E8C5A;
+  --p360-success-dark: #3E6B3A;
+  --p360-success-soft: #E7F3E4;
+
+  /* Sombras, radios, tipografia */
   --p360-shadow: 0 6px 20px rgba(109, 76, 65, .10);
   --p360-shadow-hover: 0 10px 28px rgba(109, 76, 65, .18);
   --p360-radius: 1rem;
   --p360-radius-sm: .65rem;
-  --p360-font-heading: 'Poppins', 'Nunito', sans-serif;
-  --p360-font-body: 'Nunito', 'Poppins', sans-serif;
+  --p360-font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --p360-font-body: 'Nunito', 'Segoe UI', sans-serif;
+
+  /* Anillo de foco unico para toda la app */
+  --p360-focus-ring: 0 0 0 .2rem rgba(217, 165, 102, .55);
 }
 
 html {
@@ -31,11 +46,8 @@ html {
   }
 }
 
-/* Sticky footer robusto con flexbox:
-   el body ocupa al menos toda la altura de la ventana y el contenido
-   principal (.flex-grow-1) empuja el footer al fondo sin importar
-   cuanto contenido haya. Reemplaza el hack de position:absolute que
-   hacia que el footer flotara sobre el contenido. */
+/* Sticky footer robusto con flexbox: el body ocupa al menos toda la altura
+   de la ventana y el contenido (.flex-grow-1) empuja el footer al fondo. */
 body {
   min-height: 100vh;
   display: flex;
@@ -46,19 +58,31 @@ body {
     radial-gradient(circle at 100% 0%, rgba(248, 187, 208, .18), transparent 45%),
     radial-gradient(circle at 0% 100%, rgba(217, 165, 102, .12), transparent 45%),
     var(--p360-cream);
-  background-attachment: fixed;
   overflow-x: hidden;
+}
+
+/* El fondo fijo solo en dispositivos de escritorio: en tactiles provoca
+   repintados costosos y fallos conocidos de Safari iOS. */
+@media (hover: hover) and (pointer: fine) {
+  body {
+    background-attachment: fixed;
+  }
 }
 
 footer.footer {
   flex-shrink: 0;
 }
 
+/* ---------- Tipografia ---------- */
 h1, h2, h3, h4, h5, h6,
 .display-1, .display-2, .display-3, .display-4, .display-5, .display-6 {
-  font-family: var(--p360-font-heading);
+  font-family: var(--p360-font-display);
   font-weight: 600;
   color: var(--p360-chocolate-dark);
+}
+
+h1, .display-5 {
+  letter-spacing: .01em;
 }
 
 a {
@@ -66,13 +90,63 @@ a {
 }
 
 a:hover {
-  color: var(--p360-pink-dark);
+  color: var(--p360-chocolate-dark);
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus, .form-select:focus {
-  box-shadow: 0 0 0 0.2rem rgba(217, 165, 102, .35);
+/* Cifras alineadas para tablas y totales: los montos no "bailan" */
+.text-num,
+.table td,
+.stat-card .stat-value {
+  font-variant-numeric: tabular-nums;
 }
 
+/* ---------- Foco visible (teclado) ---------- */
+/* :focus-visible evita el anillo al hacer click con el mouse pero lo
+   garantiza al navegar con Tab. */
+.btn:focus-visible,
+.btn-link.nav-link:focus-visible,
+.form-check-input:focus-visible,
+.page-link:focus-visible,
+a:focus-visible {
+  outline: none;
+  box-shadow: var(--p360-focus-ring);
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--p360-gold);
+  box-shadow: var(--p360-focus-ring);
+}
+
+.p360-navbar .nav-link:focus-visible,
+.p360-navbar .navbar-brand:focus-visible,
+.p360-navbar .navbar-toggler:focus-visible,
+.p360-navbar button:focus-visible {
+  outline: 2px solid var(--p360-gold-light);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+
+/* Enlace para saltar al contenido (visible solo con foco de teclado) */
+.skip-link {
+  position: absolute;
+  left: -200vw;
+  top: 0;
+}
+
+.skip-link:focus-visible {
+  position: fixed;
+  left: .75rem;
+  top: .75rem;
+  z-index: 2000;
+  background: var(--p360-chocolate-dark);
+  color: var(--p360-cream);
+  padding: .55rem 1.1rem;
+  border-radius: 50rem;
+  text-decoration: none;
+}
+
+/* ---------- Placeholders flotantes (Bootstrap) ---------- */
 .form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
   color: var(--bs-secondary-color);
   text-align: end;
@@ -82,6 +156,7 @@ a:hover {
   text-align: start;
 }
 
+/* ---------- Movimiento ---------- */
 main {
   animation: p360-fade-in .35s ease both;
 }
@@ -99,6 +174,22 @@ main {
 .navbar.p360-navbar {
   background: linear-gradient(100deg, var(--p360-chocolate-dark), var(--p360-chocolate) 65%, #7a5648);
   box-shadow: 0 2px 12px rgba(0, 0, 0, .12);
+  position: relative;
+}
+
+/* Firma de la marca: orilla festoneada (blonda de pasteleria) bajo la barra.
+   CSS puro: semicirculos de chocolate colgando del borde inferior. */
+.navbar.p360-navbar::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -7px;
+  height: 8px;
+  background-image: radial-gradient(circle at 8px 0, #7a5648 0 6.5px, transparent 7px);
+  background-size: 16px 8px;
+  background-repeat: repeat-x;
+  pointer-events: none;
 }
 
 .navbar.p360-navbar .navbar-brand,
@@ -108,8 +199,8 @@ main {
 }
 
 .navbar.p360-navbar .navbar-brand {
-  font-family: var(--p360-font-heading);
-  font-weight: 700;
+  font-family: var(--p360-font-display);
+  font-weight: 600;
   letter-spacing: .3px;
   display: inline-flex;
   align-items: center;
@@ -132,6 +223,7 @@ main {
 .navbar.p360-navbar .nav-link:hover {
   opacity: 1;
   background-color: rgba(255, 255, 255, .08);
+  color: var(--p360-cream);
 }
 
 .navbar.p360-navbar .nav-link.active {
@@ -163,6 +255,16 @@ main {
   font-weight: 600;
 }
 
+/* ---------- Encabezado de pagina ---------- */
+/* Titulo + accion principal: envuelve con gracia en pantallas angostas. */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .75rem;
+}
+
 /* ---------- Hero ---------- */
 .p360-hero {
   background: linear-gradient(135deg, var(--p360-chocolate-dark), var(--p360-chocolate) 60%, var(--p360-pink-dark));
@@ -170,6 +272,10 @@ main {
   border-radius: var(--p360-radius);
   padding: 3rem 2rem;
   box-shadow: var(--p360-shadow);
+}
+
+.p360-hero h1 {
+  color: var(--p360-cream);
 }
 
 .p360-hero .btn-light {
@@ -188,8 +294,8 @@ main {
 .card-header {
   background-color: var(--p360-beige);
   border-bottom: 1px solid rgba(109, 76, 65, .08);
-  font-family: var(--p360-font-heading);
-  font-weight: 600;
+  font-family: var(--p360-font-body);
+  font-weight: 700;
   color: var(--p360-chocolate-dark);
   border-top-left-radius: var(--p360-radius) !important;
   border-top-right-radius: var(--p360-radius) !important;
@@ -198,6 +304,11 @@ main {
 .card-footer {
   background-color: transparent;
   border-top: 1px solid rgba(109, 76, 65, .08);
+}
+
+/* Tarjeta de detalle: ancho de lectura comodo, un solo valor en toda la app */
+.card-detalle {
+  max-width: 34rem;
 }
 
 .stat-card {
@@ -223,9 +334,9 @@ main {
 }
 
 .stat-card .stat-value {
-  font-family: var(--p360-font-heading);
+  font-family: var(--p360-font-display);
   font-size: 1.9rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--p360-chocolate-dark);
 }
 
@@ -266,12 +377,12 @@ main {
   font-size: 2.2rem;
 }
 
-/* ---------- Buttons ---------- */
+/* ---------- Botones ---------- */
 .btn {
   border-radius: 50rem;
   font-weight: 600;
   letter-spacing: .2px;
-  transition: transform .12s ease, box-shadow .12s ease, background-color .15s ease, color .15s ease;
+  transition: transform .12s ease, box-shadow .12s ease, background-color .15s ease, color .15s ease, border-color .15s ease;
 }
 
 .btn:hover {
@@ -314,7 +425,26 @@ main {
   color: var(--p360-chocolate-dark);
 }
 
+/* Peligro tematizado: terracota de la paleta en vez del rojo Bootstrap */
+.btn-danger {
+  background-color: var(--p360-danger);
+  border-color: var(--p360-danger);
+}
+
+.btn-danger:hover, .btn-danger:focus {
+  background-color: var(--p360-danger-dark);
+  border-color: var(--p360-danger-dark);
+}
+
+.btn-outline-danger {
+  color: var(--p360-danger);
+  border-color: var(--p360-danger);
+}
+
 .btn-outline-danger:hover {
+  background-color: var(--p360-danger);
+  border-color: var(--p360-danger);
+  color: var(--p360-white);
   transform: translateY(-1px);
 }
 
@@ -324,16 +454,12 @@ main {
   color: var(--p360-chocolate-dark);
 }
 
-/* ---------- Forms ---------- */
+/* ---------- Formularios ---------- */
 .form-control, .form-select {
   border-radius: var(--p360-radius-sm);
   border-color: #E4D2C3;
   padding-top: .55rem;
   padding-bottom: .55rem;
-}
-
-.form-control:focus, .form-select:focus {
-  border-color: var(--p360-gold);
 }
 
 .form-floating > .form-control,
@@ -351,6 +477,18 @@ label, .form-label {
   border-color: var(--p360-chocolate);
 }
 
+/* Campo invalido: jquery-validation marca esta clase; sin este estilo el
+   error solo se veia en el texto, no en el campo. */
+.input-validation-error,
+.form-control.is-invalid {
+  border-color: var(--p360-danger) !important;
+  background-color: #FFFBF9;
+}
+
+.input-validation-error:focus {
+  box-shadow: 0 0 0 .2rem rgba(201, 100, 85, .35) !important;
+}
+
 .text-danger {
   color: #B3564A !important;
 }
@@ -361,13 +499,13 @@ label, .form-label {
 }
 
 .alert-success {
-  background-color: #E7F3E4;
-  color: #3E6B3A;
+  background-color: var(--p360-success-soft);
+  color: var(--p360-success-dark);
 }
 
 .alert-danger {
-  background-color: #FBE7E4;
-  color: #8C3B30;
+  background-color: var(--p360-danger-soft);
+  color: var(--p360-danger-dark);
 }
 
 .alert-warning {
@@ -375,7 +513,7 @@ label, .form-label {
   color: var(--p360-chocolate-dark);
 }
 
-/* ---------- Tables ---------- */
+/* ---------- Tablas ---------- */
 .table {
   --bs-table-bg: transparent;
   border-collapse: separate;
@@ -383,8 +521,8 @@ label, .form-label {
 }
 
 .table thead th {
-  font-family: var(--p360-font-heading);
-  font-weight: 600;
+  font-family: var(--p360-font-body);
+  font-weight: 700;
   color: var(--p360-chocolate-dark);
   background-color: var(--p360-beige);
   border-bottom: none;
@@ -416,14 +554,37 @@ label, .form-label {
   padding: .25rem;
 }
 
-/* ---------- Badges & pagination ---------- */
+/* Estado vacio dentro de tablas y listados */
+.p360-vacio {
+  text-align: center;
+  color: var(--p360-chocolate);
+  padding: 2.5rem 1rem !important;
+}
+
+.p360-vacio .bi {
+  display: block;
+  font-size: 1.9rem;
+  margin-bottom: .4rem;
+  color: var(--p360-gold);
+}
+
+/* ---------- Badges y paginacion ---------- */
 .badge.bg-secondary {
   background-color: var(--p360-beige) !important;
   color: var(--p360-chocolate-dark) !important;
 }
 
 .badge.bg-danger {
-  background-color: #C96455 !important;
+  background-color: var(--p360-danger) !important;
+}
+
+/* Verdes de exito unificados con la paleta (badges de estado y stock) */
+.badge.bg-success-subtle {
+  background-color: var(--p360-success-soft) !important;
+}
+
+.badge.text-success-emphasis {
+  color: var(--p360-success-dark) !important;
 }
 
 .page-link {
@@ -472,8 +633,8 @@ img {
   max-width: 100%;
 }
 
-/* Imagen de detalle de producto: media redondeada arriba en movil,
-   a la izquierda en escritorio (evita esquinas cuadradas al apilar) */
+/* Imagen de detalle de producto: redondeada arriba en movil,
+   a la izquierda en escritorio */
 .p360-detalle-img {
   width: 100%;
   object-fit: cover;
@@ -493,10 +654,10 @@ img {
   }
 }
 
-/* Ajustes finos para telefonos pequenos */
+/* Ajustes para telefonos pequenos */
 @media (max-width: 575.98px) {
   h1.h3 {
-    font-size: 1.3rem;
+    font-size: 1.35rem;
   }
 
   .p360-hero {
@@ -515,7 +676,6 @@ img {
     font-size: 1.5rem;
   }
 
-  /* Botones de accion en tablas: mantener icono visible y tap comodo */
   .table .btn-sm {
     padding: .3rem .55rem;
   }

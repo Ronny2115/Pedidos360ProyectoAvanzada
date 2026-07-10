@@ -4,22 +4,16 @@
     ViewData["Title"] = "Inventario";
 }
 
-<h1 class="h3 mb-3"><i class="bi bi-box-seam me-2"></i>Inventario</h1>
+<h1 class="h3 mb-3"><i class="bi bi-box-seam me-2" aria-hidden="true"></i>Inventario</h1>
 
-@if (TempData["Success"] is not null)
-{
-    <div class="alert alert-success"><i class="bi bi-check-circle me-1"></i>@TempData["Success"]</div>
-}
-@if (TempData["Error"] is not null)
-{
-    <div class="alert alert-danger"><i class="bi bi-exclamation-triangle me-1"></i>@TempData["Error"]</div>
-}
+<partial name="_Alertas" />
 
 <form method="get" asp-action="Index" class="row g-2 mb-3">
     <div class="col-md-4">
+        <label for="busquedaInventario" class="visually-hidden">Buscar producto por nombre</label>
         <div class="input-group">
-            <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
-            <input type="text" name="nombre" value="@ViewBag.Nombre" class="form-control" placeholder="Buscar por nombre" />
+            <span class="input-group-text bg-white"><i class="bi bi-search" aria-hidden="true"></i></span>
+            <input type="search" id="busquedaInventario" name="nombre" value="@ViewBag.Nombre" class="form-control" placeholder="Buscar por nombre…" autocomplete="off" />
         </div>
     </div>
     <div class="col-md-2">
@@ -38,11 +32,20 @@
             </tr>
         </thead>
         <tbody>
+@if (!Model.Any())
+{
+            <tr>
+                <td colspan="4" class="p360-vacio">
+                    <i class="bi bi-box-seam" aria-hidden="true"></i>
+                    No se encontraron productos.
+                </td>
+            </tr>
+}
 @foreach (var producto in Model)
 {
             <tr>
-                <td><i class="bi bi-cake2 text-body-secondary me-2"></i>@producto.Nombre</td>
-                <td><i class="bi bi-tag text-body-secondary me-1"></i>@producto.Categoria?.Nombre</td>
+                <td><i class="bi bi-cake2 text-body-secondary me-2" aria-hidden="true"></i>@producto.Nombre</td>
+                <td><i class="bi bi-tag text-body-secondary me-2" aria-hidden="true"></i>@producto.Categoria?.Nombre</td>
                 <td>
                     @if (producto.Stock <= 10)
                     {
@@ -54,11 +57,11 @@
                     }
                 </td>
                 <td>
-                    <form asp-action="AjustarStock" method="post" class="d-flex gap-2">
+                    <form asp-action="AjustarStock" method="post" class="d-flex gap-2 flex-wrap align-items-center">
                         <input type="hidden" name="productoId" value="@producto.Id" />
                         <input type="hidden" name="nombre" value="@ViewBag.Nombre" />
-                        <input type="number" name="nuevoStock" min="0" value="@producto.Stock" class="form-control form-control-sm" style="width:100px;" />
-                        <button type="submit" class="btn btn-sm btn-primary"><i class="bi bi-arrow-repeat me-1"></i>Actualizar</button>
+                        <input type="number" name="nuevoStock" min="0" value="@producto.Stock" class="form-control form-control-sm text-num" style="width:100px;" aria-label="Nuevo stock de @producto.Nombre" />
+                        <button type="submit" class="btn btn-sm btn-primary"><i class="bi bi-arrow-repeat me-1" aria-hidden="true"></i>Actualizar</button>
                     </form>
                 </td>
             </tr>

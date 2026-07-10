@@ -4,25 +4,22 @@
     ViewData["Title"] = "Detalle de pedido";
 }
 
-<h1 class="h3 mb-3"><i class="bi bi-receipt me-2"></i>Pedido #@Model.Id</h1>
+<h1 class="h3 mb-3"><i class="bi bi-receipt me-2" aria-hidden="true"></i>Pedido #@Model.Id</h1>
 
-@if (TempData["Success"] is not null)
-{
-    <div class="alert alert-success"><i class="bi bi-check-circle me-1"></i>@TempData["Success"]</div>
-}
+<partial name="_Alertas" />
 
 <div class="card mb-4">
     <div class="card-body p-4">
         <dl class="row mb-0">
-            <dt class="col-sm-2"><i class="bi bi-person me-1"></i>Cliente</dt>
+            <dt class="col-sm-2"><i class="bi bi-person me-1" aria-hidden="true"></i>Cliente</dt>
             <dd class="col-sm-10">@Model.Cliente?.Nombre (@Model.Cliente?.Cedula)</dd>
-            <dt class="col-sm-2"><i class="bi bi-person-badge me-1"></i>Usuario</dt>
+            <dt class="col-sm-2"><i class="bi bi-person-badge me-1" aria-hidden="true"></i>Usuario</dt>
             <dd class="col-sm-10">@Model.Usuario?.Email</dd>
-            <dt class="col-sm-2"><i class="bi bi-calendar-event me-1"></i>Fecha</dt>
+            <dt class="col-sm-2"><i class="bi bi-calendar-event me-1" aria-hidden="true"></i>Fecha</dt>
             <dd class="col-sm-10">@Model.Fecha.ToString("dd/MM/yyyy HH:mm")</dd>
             <dt class="col-sm-2">Estado</dt>
             <dd class="col-sm-10">
-                <span class="badge bg-success-subtle text-success-emphasis"><i class="bi bi-check-circle me-1"></i>@Model.Estado</span>
+                <span class="badge bg-success-subtle text-success-emphasis"><i class="bi bi-check-circle me-1" aria-hidden="true"></i>@Model.Estado</span>
             </dd>
         </dl>
     </div>
@@ -33,23 +30,23 @@
         <thead>
             <tr>
                 <th>Producto</th>
-                <th>Cantidad</th>
-                <th>Precio unit.</th>
-                <th>Descuento</th>
-                <th>Impuesto</th>
-                <th>Total linea</th>
+                <th class="text-end">Cantidad</th>
+                <th class="text-end">Precio unit.</th>
+                <th class="text-end">Descuento</th>
+                <th class="text-end">Impuesto</th>
+                <th class="text-end">Total linea</th>
             </tr>
         </thead>
         <tbody>
 @foreach (var detalle in Model.Detalles)
 {
             <tr>
-                <td><i class="bi bi-cookie text-body-secondary me-1"></i>@detalle.Producto?.Nombre</td>
-                <td>@detalle.Cantidad</td>
-                <td>@detalle.PrecioUnit.ToString("C")</td>
-                <td>@detalle.Descuento%</td>
-                <td>@detalle.ImpuestoPorc%</td>
-                <td class="fw-semibold">@detalle.TotalLinea.ToString("C")</td>
+                <td><i class="bi bi-cookie text-body-secondary me-2" aria-hidden="true"></i>@detalle.Producto?.Nombre</td>
+                <td class="text-end text-num">@detalle.Cantidad</td>
+                <td class="text-end text-num">@detalle.PrecioUnit.ToString("C")</td>
+                <td class="text-end text-num">@detalle.Descuento%</td>
+                <td class="text-end text-num">@detalle.ImpuestoPorc%</td>
+                <td class="fw-semibold text-end text-num">@detalle.TotalLinea.ToString("C")</td>
             </tr>
 }
         </tbody>
@@ -78,4 +75,4 @@
     </div>
 </div>
 
-<a asp-action="Index" class="btn btn-outline-secondary mt-3"><i class="bi bi-arrow-left me-1"></i>Volver</a>
+<a asp-action="Index" class="btn btn-outline-secondary mt-3"><i class="bi bi-arrow-left me-1" aria-hidden="true"></i>Volver</a>

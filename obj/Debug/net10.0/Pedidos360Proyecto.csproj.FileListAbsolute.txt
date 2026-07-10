@@ -287,8 +287,8 @@ C:\Users\andre\Documents\DOCUMENTOS U\Programacion Avanzada\Pedidos360Proyecto\o
 C:\Users\andre\Documents\DOCUMENTOS U\Programacion Avanzada\Pedidos360Proyecto\obj\Debug\net10.0\ref\Pedidos360Proyecto.dll
 C:\Users\andre\Documents\DOCUMENTOS U\Programacion Avanzada\Pedidos360Proyecto\obj\Debug\net10.0\compressed\p3inz83ef4-{0}-6ogd5opyor-6ogd5opyor.gz
 C:\Users\andre\Documents\DOCUMENTOS U\Programacion Avanzada\Pedidos360Proyecto\obj\Debug\net10.0\compressed\k9h8c423mq-{0}-ho0d1k5s6r-ho0d1k5s6r.gz
-C:\Users\andre\Documents\DOCUMENTOS U\Programacion Avanzada\Pedidos360Proyecto\obj\Debug\net10.0\compressed\moiwjq8k3e-{0}-3o8l8r3aeq-3o8l8r3aeq.gz
 C:\Users\andre\Documents\DOCUMENTOS U\Programacion Avanzada\Pedidos360Proyecto\obj\Debug\net10.0\compressed\1rwdd13a4k-{0}-r277hqnw05-r277hqnw05.gz
 C:\Users\andre\Documents\DOCUMENTOS U\Programacion Avanzada\Pedidos360Proyecto\obj\Debug\net10.0\compressed\teu5vlmzkp-{0}-r277hqnw05-r277hqnw05.gz
-C:\Users\andre\Documents\DOCUMENTOS U\Programacion Avanzada\Pedidos360Proyecto\obj\Debug\net10.0\compressed\4r2ac3qpe6-{0}-yzcjz13boh-yzcjz13boh.gz
+C:\Users\andre\Documents\DOCUMENTOS U\Programacion Avanzada\Pedidos360Proyecto\obj\Debug\net10.0\compressed\4r2ac3qpe6-{0}-bps7cmpoc8-bps7cmpoc8.gz
+C:\Users\andre\Documents\DOCUMENTOS U\Programacion Avanzada\Pedidos360Proyecto\obj\Debug\net10.0\compressed\moiwjq8k3e-{0}-ykp5ulj0ad-ykp5ulj0ad.gz
 C:\Users\andre\Documents\DOCUMENTOS U\Programacion Avanzada\Pedidos360Proyecto\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt

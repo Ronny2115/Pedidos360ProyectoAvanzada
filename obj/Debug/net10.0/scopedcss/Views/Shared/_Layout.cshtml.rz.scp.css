@@ -1,0 +1,13 @@
+/* Estilos scoped del layout.
+   El posicionamiento del footer y los colores se manejan en site.css (tema Pasteleria).
+   Este archivo se mantiene minimo para evitar conflictos con el tema. */
+
+a.navbar-brand[b-l6e1ue87z7] {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+.box-shadow[b-l6e1ue87z7] {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}

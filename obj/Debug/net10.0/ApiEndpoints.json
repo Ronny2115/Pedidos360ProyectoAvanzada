@@ -1,0 +1,54 @@
+[
+  {
+    "ContainingType": "Pedidos360Proyecto.Controllers.Api.PedidosApiController",
+    "Method": "Calcular",
+    "RelativePath": "api/pedidos/calcular",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Pedidos360Proyecto.Models.Api.CalcularPedidoRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Pedidos360Proyecto.Models.Api.CalcularPedidoResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Pedidos360Proyecto.Controllers.Api.ProductosApiController",
+    "Method": "Buscar",
+    "RelativePath": "api/productos/buscar",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "q",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[Pedidos360Proyecto.Models.Api.ProductoBusquedaDto, Pedidos360Proyecto, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  }
+]

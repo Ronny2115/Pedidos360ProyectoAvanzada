@@ -1,0 +1,95 @@
+@model ProductoIndexViewModel
+
+@{
+    ViewData["Title"] = "Productos";
+}
+
+<div class="page-header mb-3">
+    <h1 class="h3 mb-0"><i class="bi bi-cake2 me-2" aria-hidden="true"></i>Productos</h1>
+    @if (User.IsInRole("Admin"))
+    {
+        <a asp-action="Create" class="btn btn-primary"><i class="bi bi-plus-circle me-1" aria-hidden="true"></i>Nuevo producto</a>
+    }
+</div>
+
+<partial name="_Alertas" />
+
+<form method="get" asp-action="Index" class="row g-2 mb-4">
+    <div class="col-md-4">
+        <label for="filtroNombre" class="visually-hidden">Buscar por nombre</label>
+        <div class="input-group">
+            <span class="input-group-text bg-white"><i class="bi bi-search" aria-hidden="true"></i></span>
+            <input type="search" id="filtroNombre" name="nombre" value="@Model.Nombre" class="form-control" placeholder="Buscar por nombre…" autocomplete="off" />
+        </div>
+    </div>
+    <div class="col-md-4">
+        <label for="filtroCategoria" class="visually-hidden">Filtrar por categoria</label>
+        <select id="filtroCategoria" name="categoriaId" class="form-select">
+            <option value="">Todas las categorias</option>
+            @foreach (var categoria in Model.Categorias)
+            {
+                <option value="@categoria.Id" selected="@(Model.CategoriaId == categoria.Id)">@categoria.Nombre</option>
+            }
+        </select>
+    </div>
+    <div class="col-6 col-md-2">
+        <button type="submit" class="btn btn-outline-primary w-100"><i class="bi bi-funnel me-1" aria-hidden="true"></i>Filtrar</button>
+    </div>
+    <div class="col-6 col-md-2">
+        <a asp-action="Index" class="btn btn-outline-secondary w-100"><i class="bi bi-x-lg me-1" aria-hidden="true"></i>Limpiar</a>
+    </div>
+</form>
+
+@if (!Model.Productos.Any())
+{
+    <div class="card">
+        <div class="card-body p360-vacio">
+            <i class="bi bi-cake2" aria-hidden="true"></i>
+            No se encontraron productos con esos filtros.
+            <a asp-action="Index">Ver todos los productos</a>
+        </div>
+    </div>
+}
+
+<div class="row row-cols-1 row-cols-md-3 g-3">
+@foreach (var producto in Model.Productos)
+{
+        <div class="col">
+            <div class="card producto-card h-100">
+                <img src="@producto.ImagenUrl" class="card-img-top" alt="@producto.Nombre" width="400" height="160" loading="lazy" style="height:160px;object-fit:cover;" />
+                <div class="card-body">
+                    <h5 class="card-title">@producto.Nombre</h5>
+                    <p class="card-text mb-1"><i class="bi bi-tag text-body-secondary me-1" aria-hidden="true"></i>@producto.Categoria?.Nombre</p>
+                    <p class="card-text mb-1"><i class="bi bi-currency-dollar text-body-secondary me-1" aria-hidden="true"></i>@producto.Precio.ToString("C")</p>
+                    <p class="card-text mb-1"><i class="bi bi-box-seam text-body-secondary me-1" aria-hidden="true"></i>Stock: @producto.Stock</p>
+                    @if (!producto.Activo)
+                    {
+                        <span class="badge bg-secondary"><i class="bi bi-slash-circle me-1" aria-hidden="true"></i>Inactivo</span>
+                    }
+                </div>
+                <div class="card-footer d-flex justify-content-between">
+                    <a asp-action="Details" asp-route-id="@producto.Id" class="btn btn-sm btn-outline-secondary" title="Ver" aria-label="Ver producto @producto.Nombre"><i class="bi bi-eye" aria-hidden="true"></i></a>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@producto.Id" class="btn btn-sm btn-outline-primary" title="Editar" aria-label="Editar producto @producto.Nombre"><i class="bi bi-pencil" aria-hidden="true"></i></a>
+                        <a asp-action="Delete" asp-route-id="@producto.Id" class="btn btn-sm btn-outline-danger" title="Eliminar" aria-label="Eliminar producto @producto.Nombre"><i class="bi bi-trash" aria-hidden="true"></i></a>
+                    }
+                </div>
+            </div>
+        </div>
+}
+</div>
+
+@if (Model.TotalPaginas > 1)
+{
+    <nav class="mt-4" aria-label="Paginacion de productos">
+        <ul class="pagination">
+            @for (var i = 1; i <= Model.TotalPaginas; i++)
+            {
+                <li class="page-item @(i == Model.Pagina ? "active" : "")">
+                    <a class="page-link" aria-label="Pagina @i" aria-current="@(i == Model.Pagina ? "page" : null)" asp-action="Index" asp-route-pagina="@i" asp-route-nombre="@Model.Nombre" asp-route-categoriaId="@Model.CategoriaId">@i</a>
+                </li>
+            }
+        </ul>
+    </nav>
+}

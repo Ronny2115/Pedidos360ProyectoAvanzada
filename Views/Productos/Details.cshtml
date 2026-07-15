@@ -1,0 +1,47 @@
+@model Producto
+
+@{
+    ViewData["Title"] = "Detalle de producto";
+}
+
+<h1 class="h3 mb-3"><i class="bi bi-cake2 me-2" aria-hidden="true"></i>Detalle de producto</h1>
+
+<div class="card">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img src="@Model.ImagenUrl" class="p360-detalle-img" alt="@Model.Nombre" width="600" height="400" />
+        </div>
+        <div class="col-md-8">
+            <div class="card-body p-4">
+                <dl class="row mb-3">
+                    <dt class="col-sm-3"><i class="bi bi-cake2 me-1" aria-hidden="true"></i>Nombre</dt>
+                    <dd class="col-sm-9">@Model.Nombre</dd>
+                    <dt class="col-sm-3"><i class="bi bi-tag me-1" aria-hidden="true"></i>Categoria</dt>
+                    <dd class="col-sm-9">@Model.Categoria?.Nombre</dd>
+                    <dt class="col-sm-3"><i class="bi bi-currency-dollar me-1" aria-hidden="true"></i>Precio</dt>
+                    <dd class="col-sm-9">@Model.Precio.ToString("C")</dd>
+                    <dt class="col-sm-3"><i class="bi bi-percent me-1" aria-hidden="true"></i>Impuesto</dt>
+                    <dd class="col-sm-9">@Model.ImpuestoPorc%</dd>
+                    <dt class="col-sm-3"><i class="bi bi-box-seam me-1" aria-hidden="true"></i>Stock</dt>
+                    <dd class="col-sm-9">@Model.Stock</dd>
+                    <dt class="col-sm-3">Activo</dt>
+                    <dd class="col-sm-9">
+                        @if (Model.Activo)
+                        {
+                            <span class="badge bg-success-subtle text-success-emphasis"><i class="bi bi-check-circle me-1" aria-hidden="true"></i>Si</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-secondary"><i class="bi bi-slash-circle me-1" aria-hidden="true"></i>No</span>
+                        }
+                    </dd>
+                </dl>
+                @if (User.IsInRole("Admin"))
+                {
+                    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary"><i class="bi bi-pencil me-1" aria-hidden="true"></i>Editar</a>
+                }
+                <a asp-action="Index" class="btn btn-outline-secondary"><i class="bi bi-arrow-left me-1" aria-hidden="true"></i>Volver</a>
+            </div>
+        </div>
+    </div>
+</div>

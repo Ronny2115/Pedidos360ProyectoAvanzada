@@ -1,0 +1,28 @@
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<ul class="navbar-nav align-items-center">
+@if (SignInManager.IsSignedIn(User))
+{
+    var rol = User.IsInRole("Admin") ? "Admin" : User.IsInRole("Ventas") ? "Ventas" : User.IsInRole("Operaciones") ? "Operaciones" : null;
+    <li class="nav-item d-flex align-items-center me-2 text-white">
+        <span class="me-2">@User.Identity?.Name</span>
+        @if (rol is not null)
+        {
+            <span class="badge role-badge">@rol</span>
+        }
+    </li>
+    <li class="nav-item">
+        <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <button id="logout" type="submit" class="nav-link btn btn-link">Cerrar sesion</button>
+        </form>
+    </li>
+}
+else
+{
+    <li class="nav-item">
+        <a class="nav-link" asp-area="Identity" asp-page="/Account/Login">Iniciar sesion</a>
+    </li>
+}
+</ul>

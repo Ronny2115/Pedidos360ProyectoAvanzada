@@ -1,0 +1,50 @@
+@model Cliente
+
+@{
+    ViewData["Title"] = "Nuevo cliente";
+}
+
+<h1 class="h3 mb-3"><i class="bi bi-person-plus me-2" aria-hidden="true"></i>Nuevo cliente</h1>
+
+<div class="row">
+    <div class="col-md-7">
+        <div class="card">
+            <div class="card-body p-4">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-floating mb-3">
+                        <input asp-for="Nombre" class="form-control" placeholder="Nombre completo" autocomplete="name" />
+                        <label asp-for="Nombre"></label>
+                        <span asp-validation-for="Nombre" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input asp-for="Cedula" class="form-control" placeholder="Cedula" autocomplete="off" spellcheck="false" />
+                        <label asp-for="Cedula"></label>
+                        <span asp-validation-for="Cedula" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input asp-for="Correo" class="form-control" placeholder="nombre@ejemplo.com" autocomplete="email" spellcheck="false" />
+                        <label asp-for="Correo"></label>
+                        <span asp-validation-for="Correo" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input asp-for="Telefono" class="form-control" placeholder="Telefono" autocomplete="tel" inputmode="tel" />
+                        <label asp-for="Telefono"></label>
+                        <span asp-validation-for="Telefono" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input asp-for="Direccion" class="form-control" placeholder="Direccion" autocomplete="street-address" />
+                        <label asp-for="Direccion"></label>
+                        <span asp-validation-for="Direccion" class="text-danger"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary"><i class="bi bi-check2 me-1" aria-hidden="true"></i>Guardar</button>
+                    <a asp-action="Index" class="btn btn-outline-secondary"><i class="bi bi-x-lg me-1" aria-hidden="true"></i>Cancelar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,70 @@
+@model ProductoEditViewModel
+
+@{
+    ViewData["Title"] = "Editar producto";
+}
+
+<h1 class="h3 mb-3"><i class="bi bi-pencil-square me-2" aria-hidden="true"></i>Editar producto</h1>
+
+<div class="row">
+    <div class="col-md-7">
+        <div class="card">
+            <div class="card-body p-4">
+                <form asp-action="Edit" enctype="multipart/form-data">
+                    <input type="hidden" asp-for="Id" />
+                    <input type="hidden" asp-for="ImagenUrlActual" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-floating mb-3">
+                        <input asp-for="Nombre" class="form-control" placeholder="Nombre del producto" autocomplete="off" />
+                        <label asp-for="Nombre"></label>
+                        <span asp-validation-for="Nombre" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="CategoriaId" class="form-label"></label>
+                        <select asp-for="CategoriaId" class="form-select" asp-items="ViewBag.Categorias">
+                        </select>
+                        <span asp-validation-for="CategoriaId" class="text-danger"></span>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-floating mb-3">
+                                <input asp-for="Precio" class="form-control" placeholder="Precio" inputmode="decimal" autocomplete="off" />
+                                <label asp-for="Precio"></label>
+                                <span asp-validation-for="Precio" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating mb-3">
+                                <input asp-for="ImpuestoPorc" class="form-control" placeholder="Impuesto" inputmode="decimal" autocomplete="off" />
+                                <label asp-for="ImpuestoPorc"></label>
+                                <span asp-validation-for="ImpuestoPorc" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input asp-for="Stock" class="form-control" placeholder="Stock" inputmode="numeric" autocomplete="off" />
+                        <label asp-for="Stock"></label>
+                        <span asp-validation-for="Stock" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3 form-check form-switch">
+                        <input asp-for="Activo" class="form-check-input" role="switch" />
+                        <label asp-for="Activo" class="form-check-label"></label>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label d-block">Imagen actual</label>
+                        <img src="@Model.ImagenUrlActual" width="133" height="100" style="max-height:100px;width:auto;" class="mb-2 rounded shadow-sm" alt="Imagen actual del producto" /><br />
+                        <label asp-for="Imagen" class="form-label"><i class="bi bi-image me-1" aria-hidden="true"></i>Reemplazar imagen (opcional)</label>
+                        <input asp-for="Imagen" type="file" class="form-control" accept="image/*" />
+                        <span asp-validation-for="Imagen" class="text-danger"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary"><i class="bi bi-check2 me-1" aria-hidden="true"></i>Guardar</button>
+                    <a asp-action="Index" class="btn btn-outline-secondary"><i class="bi bi-x-lg me-1" aria-hidden="true"></i>Cancelar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

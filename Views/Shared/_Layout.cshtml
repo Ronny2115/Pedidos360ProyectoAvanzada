@@ -1,0 +1,91 @@
+@{
+    var controladorActual = ViewContext.RouteData.Values["controller"]?.ToString() ?? string.Empty;
+    string EsActivo(string controlador) => controladorActual.Equals(controlador, StringComparison.OrdinalIgnoreCase) ? "active" : "";
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#4E332A" />
+    <title>@ViewData["Title"] - Pedidos360</title>
+    <link rel="icon" href="~/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap-icons/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Pedidos360Proyecto.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <a class="skip-link" href="#contenido-principal">Saltar al contenido</a>
+    <header>
+        <nav class="navbar navbar-expand-lg p360-navbar mb-4">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <i class="bi bi-cup-hot-fill" aria-hidden="true"></i> Pedidos360
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navPrincipal" aria-controls="navPrincipal"
+                        aria-expanded="false" aria-label="Abrir menu de navegacion">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div id="navPrincipal" class="navbar-collapse collapse d-lg-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link @EsActivo("Home")" asp-area="" asp-controller="Home" asp-action="Index"><i class="bi bi-house-door me-1" aria-hidden="true"></i>Inicio</a>
+                        </li>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link @EsActivo("Categorias")" asp-area="" asp-controller="Categorias" asp-action="Index"><i class="bi bi-tags me-1" aria-hidden="true"></i>Categorias</a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Admin") || User.IsInRole("Ventas") || User.IsInRole("Operaciones"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link @EsActivo("Productos")" asp-area="" asp-controller="Productos" asp-action="Index"><i class="bi bi-cake2 me-1" aria-hidden="true"></i>Productos</a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Admin") || User.IsInRole("Ventas"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link @EsActivo("Clientes")" asp-area="" asp-controller="Clientes" asp-action="Index"><i class="bi bi-people me-1" aria-hidden="true"></i>Clientes</a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Admin") || User.IsInRole("Ventas") || User.IsInRole("Operaciones"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link @EsActivo("Pedidos")" asp-area="" asp-controller="Pedidos" asp-action="Index"><i class="bi bi-receipt me-1" aria-hidden="true"></i>Pedidos</a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Admin") || User.IsInRole("Operaciones"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link @EsActivo("Inventario")" asp-area="" asp-controller="Inventario" asp-action="Index"><i class="bi bi-box-seam me-1" aria-hidden="true"></i>Inventario</a>
+                            </li>
+                        }
+                    </ul>
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container flex-grow-1">
+        <main role="main" id="contenido-principal" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer">
+        <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
+            <span><i class="bi bi-cake2-fill me-1" aria-hidden="true"></i>&copy; 2026 Pedidos360 — Pasteleria Artesanal</span>
+            <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacidad</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
